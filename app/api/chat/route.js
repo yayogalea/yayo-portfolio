@@ -9,6 +9,8 @@ export async function POST(request) {
     });
   }
 
+  const model = process.env.ANTHROPIC_MODEL || "claude-sonnet-4-20250514";
+
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -17,7 +19,7 @@ export async function POST(request) {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
+      model,
       max_tokens: 1000,
       stream: true,
       system,
@@ -27,10 +29,13 @@ export async function POST(request) {
 
   if (!response.ok) {
     const err = await response.text();
-    return new Response(err, { status: response.status });
+    console.error("Anthropic API error:", response.status, err);
+    return new Response(JSON.stringify({ error: err, status: response.status }), {
+      status: response.status,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
-  // Forward the stream directly to the client
   return new Response(response.body, {
     headers: {
       "Content-Type": "text/event-stream",
