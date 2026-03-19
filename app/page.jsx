@@ -1012,11 +1012,10 @@ export default function YayoPortfolio() {
           return updated;
         });
       }
-    }finally{
-      loadingRef.current=false;
-      setLoading(false);
-      setStreaming(false);
     }
+    loadingRef.current=false;
+    setLoading(false);
+    setStreaming(false);
   },[]);
 
   function onKey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input);}}
