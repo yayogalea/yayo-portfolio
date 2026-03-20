@@ -415,7 +415,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
   const phases = [];
   const phaseSlideMap = {};
   slides.forEach((sl, i) => {
-    if (sl.phase && !phaseSlideMap[sl.phase]) { phaseSlideMap[sl.phase] = i; phases.push(sl.phase); }
+    if (sl.phase && phaseSlideMap[sl.phase] === undefined) { phaseSlideMap[sl.phase] = i; phases.push(sl.phase); }
   });
   const currentPhase = s.phase || null;
   const hasPhases = phases.length > 0;
@@ -577,6 +577,22 @@ function CaseStudyViewer({ project, lang, onClose }) {
 
         {/* Screens list */}
         {s.screens && <div style={{marginBottom:8}}>{t(s.screens).map((sc,i)=><div key={i} style={bulletStyle}>{sc}</div>)}</div>}
+
+        {/* Figma embed */}
+        {s.figmaEmbed && (
+          <div style={{margin:"8px 0",border:"2px inset "+C.inset,background:"#fff",position:"relative"}}>
+            <iframe
+              style={{border:"none",width:"100%",height:420,display:"block"}}
+              src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(s.figmaEmbed)}`}
+              allowFullScreen
+            />
+            <a href={s.figmaEmbed} target="_blank" rel="noopener noreferrer" style={{
+              position:"absolute",bottom:8,right:8,background:C.accent,color:"#fff",
+              padding:"4px 10px",fontSize:10,fontWeight:"bold",border:"2px outset #4040C0",
+              textDecoration:"none",fontFamily:"inherit",
+            }}>{lang==="es"?"Abrir en Figma ↗":"Open in Figma ↗"}</a>
+          </div>
+        )}
       </div>
 
       {/* Navigation — fixed at bottom of window */}

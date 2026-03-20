@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(ls \"c:/Users/Yayog/OneDrive/Escritorio/UX/Portfolio/yayo-portfolio/app/page\"*)",
+      "Bash(rm -rf .next)",
+      "Bash(npx next:*)"
+    ]
+  }
+}

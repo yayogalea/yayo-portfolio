@@ -80,6 +80,12 @@ export const PROJECTS = {
           en: ["🎨 State cards: Open, Waiting Assignment, Unattended, Waiting Response","📊 Each card with Agent/Bot breakdown and channels with recognizable icons","🚨 Visual alarms when numbers exceed configurable thresholds","🔀 Tabs to group: By Executive, By Account, By Department"],
         },
       },
+      {
+        phase: "prototype",
+        icon: "🖥️", title: { es:"Prototipo interactivo", en:"Interactive prototype" },
+        content: { es:"Explora el prototipo completo en Figma. Navega por las pantallas para ver la experiencia rediseñada en detalle:", en:"Explore the full prototype in Figma. Navigate through the screens to see the redesigned experience in detail:" },
+        figmaEmbed: "https://www.figma.com/proto/wcEPfz9xRPJZaGWILTHoTT/METRI.-Monitoreo-3.0--En-Desarrollo---Copy-?node-id=6405-10462&node-type=frame&viewport=2408%2C445%2C0.31&t=8vqWBvjqgumEmjfK-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6405%3A10462&show-proto-sidebar=1",
+      },
       /* ── ITERATION ── */
       {
         phase: "iteration",
@@ -221,6 +227,12 @@ export const PROJECTS = {
           es: ["📘 Documentación completa de todos los tipos de instrucciones","🔗 Specs de conexión entre nodos — reglas de qué puede conectar con qué","🎨 Estados visuales: default, hover, selected, error, disabled","📐 Figma detallado con medidas exactas"],
           en: ["📘 Complete documentation of all instruction types","🔗 Node connection specs — rules for what can connect to what","🎨 Visual states: default, hover, selected, error, disabled","📐 Detailed Figma with exact measurements"],
         },
+      },
+      {
+        phase: "prototype",
+        icon: "🖥️", title: { es:"Prototipo interactivo", en:"Interactive prototype" },
+        content: { es:"Explora el prototipo del Flow Builder en Figma. Navega por las pantallas para ver la experiencia del canvas visual en detalle:", en:"Explore the Flow Builder prototype in Figma. Navigate through the screens to see the visual canvas experience in detail:" },
+        figmaEmbed: "https://www.figma.com/proto/uL9YK8WAAwGU739SFw6kRn/FLUJOS.-Visualizaci%C3%B3n-de-Flujos--LISTO---Copy-?page-id=2%3A25&node-id=7219-66754&node-type=frame&viewport=1881%2C952%2C0.21&t=JqzNd32DJwplF0pE-1&scaling=contain&content-scaling=fixed",
       },
       /* ── ITERATION ── */
       {
