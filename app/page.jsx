@@ -411,7 +411,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
   const s = slides[slide];
 
   /* Phase bar — derived from slides' `phase` field */
-  const PHASE_LABELS = { context:{es:"Contexto",en:"Context"}, research:{es:"Research",en:"Research"}, goals:{es:"Objetivos",en:"Goals"}, wireframes:{es:"Wireframes",en:"Wireframes"}, prototype:{es:"Prototipo",en:"Prototype"}, iteration:{es:"Iteración",en:"Iteration"}, results:{es:"Resultados",en:"Results"} };
+  const PHASE_LABELS = { context:{es:"Contexto",en:"Context"}, research:{es:"Investigación",en:"Research"}, goals:{es:"Objetivos",en:"Goals"}, wireframes:{es:"Wireframes",en:"Wireframes"}, prototype:{es:"Prototipo",en:"Prototype"}, ideation:{es:"Ideación",en:"Ideation"}, iteration:{es:"Iteración",en:"Iteration"}, results:{es:"Resultados",en:"Results"} };
   const phases = [];
   const phaseSlideMap = {};
   slides.forEach((sl, i) => {
@@ -499,7 +499,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
         )}
 
         {/* Single image */}
-        {s.image && <div style={{margin:"8px 0",background:"#000",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",justifyContent:"center"}}>
+        {s.image && <div style={{margin:"8px 0",background:"transparent",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",justifyContent:"center"}}>
           <ClickableImage src={s.image} alt={t(s.title)} style={{maxWidth:"100%",maxHeight:320,objectFit:"contain",display:"block"}} />
         </div>}
 
@@ -507,7 +507,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
         {s.images && (
           <div style={{display:"grid",gridTemplateColumns:s.images.length === 1 ? "1fr" : "1fr 1fr",gap:6,margin:"8px 0"}}>
             {s.images.map((img, i) => (
-              <div key={i} style={{background:"#000",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",flexDirection:"column"}}>
+              <div key={i} style={{background:"transparent",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",flexDirection:"column"}}>
                 <ClickableImage src={img.src || img} alt={img.caption ? t(img.caption) : t(s.title)} style={{width:"100%",maxHeight:260,objectFit:"contain",display:"block"}} />
                 {img.caption && <div style={{background:C.winBg,padding:"3px 6px",fontSize:10,color:C.txt,textAlign:"center",borderTop:"1px solid "+C.inset}}>{t(img.caption)}</div>}
               </div>
@@ -579,6 +579,16 @@ function CaseStudyViewer({ project, lang, onClose }) {
         {s.screens && <div style={{marginBottom:8}}>{t(s.screens).map((sc,i)=><div key={i} style={bulletStyle}>{sc}</div>)}</div>}
 
         {/* Figma embed */}
+        {s.figmaLink && (
+          <div style={{margin:"12px 0",textAlign:"center"}}>
+            <a href={s.figmaLink} target="_blank" rel="noopener noreferrer" style={{
+              display:"inline-block",background:C.accent,color:"#fff",
+              padding:"8px 20px",fontSize:12,fontWeight:"bold",border:"2px outset #4040C0",
+              textDecoration:"none",fontFamily:"inherit",cursor:"pointer",
+            }}>{lang==="es"?"🖥️ Ver prototipo en Figma ↗":"🖥️ View prototype in Figma ↗"}</a>
+          </div>
+        )}
+
         {s.figmaEmbed && (
           <div style={{margin:"8px 0",border:"2px inset "+C.inset,background:"#fff",position:"relative"}}>
             <iframe

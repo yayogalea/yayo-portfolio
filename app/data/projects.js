@@ -5,133 +5,140 @@
    ═══════════════════════════════════════════════════════════════ */
 export const PROJECTS = {
   monitoreo: {
-    title: { es: "De datos ignorados a decisiones en tiempo real", en: "From ignored data to real-time decisions" },
+    title: { es: "Rediseño de Monitoreo en Tiempo Real", en: "Real-Time Monitoring Redesign" },
     company: "Helpdesk SaaS",
     role: "Product Designer → Product Owner",
     period: "2024",
-    competency: { es: "User Research · Iteración basada en data", en: "User Research · Data-driven iteration" },
+    competency: { es: "User Research · Iteración basada en data · Data Viz", en: "User Research · Data-driven iteration · Data Viz" },
     slides: [
-      /* ── CONTEXT ── */
+      /* ══════════════════════════════════════════
+         1. RESUMEN Y CONTEXTO
+         ══════════════════════════════════════════ */
       {
         phase: "context",
-        icon: "📊", title: { es:"El Desafío", en:"The Challenge" },
-        content: { es:"Una plataforma de customer service tenía toda la data de productividad de los equipos de atención, pero nadie la usaba. Los supervisores preferían extraer los datos por API y visualizarlos en herramientas externas. El producto tenía los datos correctos — el problema era cómo los presentaba.", en:"A customer service platform had all the productivity data for support teams, but nobody used it. Supervisors preferred extracting data via API and visualizing it in external tools. The product had the right data — the problem was how it presented them." },
+        icon: "📊", title: { es:"Resumen", en:"Overview" },
+        content: { es:"Rediseñé por completo la sección de monitoreo de una plataforma SaaS de atención al cliente. Los supervisores tenían acceso a datos valiosos de productividad — tickets por estado, tiempos de respuesta, carga por ejecutivo — pero la interfaz los presentaba de forma tan confusa que preferían extraerlos por API y visualizarlos en herramientas externas.\n\nEste era un problema recurrente en la aplicación: los clientes preferían extraer la información del sistema y llevársela a otras herramientas de visualización. Esto nos obligaba a crear y mantener sistemas de exportación y APIs que generaban costos significativos en infraestructura y en horas de desarrollo. El resultado del rediseño fue un dashboard en tiempo real con alarmas visuales configurables que eliminó esa dependencia, subió la satisfacción de 3.9 a 4.2/5, y se convirtió en un patrón que se expandió a otras secciones del producto.", en:"I completely redesigned the monitoring section of a customer service SaaS platform. Supervisors had access to valuable productivity data — tickets by status, response times, workload per agent — but the interface presented it so confusingly that they preferred extracting it via API and visualizing it in external tools.\n\nThis was a recurring problem across the application: clients preferred extracting information from the system and taking it to other visualization tools. This forced us to build and maintain export systems and APIs that generated significant infrastructure and development costs. The redesign resulted in a real-time dashboard with configurable visual alarms that eliminated that dependency, raised satisfaction from 3.9 to 4.2/5, and became a pattern that expanded to other product sections." },
         tags: ["Analytics","Real-time","User Research","Data Viz","Redesign"],
       },
       {
         phase: "context",
-        icon: "🔄", title: { es:"Lo que estaba en juego", en:"What was at stake" },
-        content: { es:"La sección de Monitoreo era una de las más usadas por supervisores de atención al cliente — o debería serlo. El ciclo de un ticket pasa por múltiples etapas, y el Monitoreo debe mostrar cuántos hay en cada una:", en:"The Monitoring section was one of the most used by customer service supervisors — or should have been. A ticket's lifecycle passes through multiple stages, and Monitoring must show how many are in each:" },
+        icon: "🔥", title: { es:"El Problema", en:"The Problem" },
+        content: { es:"La sección de Monitoreo debía ser la herramienta principal de los supervisores. El ciclo de vida de un ticket de atención al cliente pasa por múltiples etapas, y los supervisores necesitan ver en tiempo real cuántos tickets hay en cada estado para detectar cuellos de botella antes de que escalen:", en:"The Monitoring section should have been the supervisors' primary tool. A customer service ticket's lifecycle passes through multiple stages, and supervisors need to see in real time how many tickets are in each state to detect bottlenecks before they escalate:" },
         flow: { es:["Esperando Asignación","Ticket Asignado","Esperando Respuesta","Ticket Cerrado"], en:["Waiting Assignment","Ticket Assigned","Waiting Response","Ticket Closed"] },
         bullets: {
-          es: ["💬 Cada mensaje de cliente genera un ticket que necesita seguimiento","⏳ Los supervisores necesitan ver en tiempo real dónde se acumulan los cuellos de botella","📊 Sin esta visibilidad, los problemas se descubren demasiado tarde"],
-          en: ["💬 Every customer message creates a ticket that needs tracking","⏳ Supervisors need to see in real time where bottlenecks pile up","📊 Without this visibility, problems are discovered too late"],
+          es: ["⏳ Esperando Asignación — tickets recién creados que ningún ejecutivo ha tomado aún. Si se acumulan, los clientes esperan sin respuesta","👤 Ticket Asignado — ya tiene un ejecutivo responsable, pero aún no ha sido contactado el cliente","💬 Esperando Respuesta — el ejecutivo respondió y espera la respuesta del cliente. Acá se mide el SLA","✅ Ticket Cerrado — caso resuelto. El volumen de cierre indica la productividad del equipo","📉 Nadie usaba la sección — los supervisores la evitaban y extraían los datos por API a herramientas externas","💸 Esto generaba costos en infraestructura y horas de desarrollo para mantener sistemas de exportación que no deberían existir"],
+          en: ["⏳ Waiting Assignment — newly created tickets no agent has picked up yet. If they pile up, customers wait without response","👤 Ticket Assigned — already has a responsible agent, but the customer hasn't been contacted yet","💬 Waiting Response — the agent responded and awaits the customer's reply. SLA is measured here","✅ Ticket Closed — case resolved. Closure volume indicates team productivity","📉 Nobody used the section — supervisors avoided it and extracted data via API to external tools","💸 This generated infrastructure and development costs to maintain export systems that shouldn't need to exist"],
         },
       },
       {
         phase: "context",
-        icon: "😤", title: { es:"Por qué nadie lo usaba", en:"Why nobody used it" },
-        content: { es:"La versión existente tenía problemas de UX tan serios que los supervisores la evitaban activamente:", en:"The existing version had UX problems so serious that supervisors actively avoided it:" },
-        image: "/images/mon_problems_12.png",
-        bullets: {
-          es: ["1️⃣ No se podían ver todos los estados de tickets de un vistazo — había que navegar entre vistas","2️⃣ Los canales (WhatsApp, Facebook, Email) eran difíciles de diferenciar visualmente","3️⃣ Cada sección tenía filtros distintos — inconsistencia total que generaba confusión","4️⃣ Patrones de diseño mal aplicados hacían la información difícil de consumir"],
-          en: ["1️⃣ Couldn't see all ticket states at a glance — had to navigate between views","2️⃣ Channels (WhatsApp, Facebook, Email) were hard to differentiate visually","3️⃣ Each section had different filters — total inconsistency that created confusion","4️⃣ Poorly applied design patterns made information hard to consume"],
-        },
+        icon: "🖥️", title: { es:"Estado previo", en:"Previous state" },
+        content: { es:"La versión existente tenía problemas de UX fundamentales. El dashboard mostraba números planos sin iconos de canal, cada sección tenía filtros distintos (la tabla de KPIs tenía su propio filtro de departamento separado del general), y la vista de detalle tenía links poco visibles con una jerarquía de información confusa:", en:"The existing version had fundamental UX problems. The dashboard showed flat numbers without channel icons, each section had different filters (the KPI table had its own department filter separate from the general one), and the detail view had hard-to-find links with a confusing information hierarchy:" },
+        images: [
+          { src: "/images/mon_old_v1_dashboard.png", caption: { es:"Dashboard: números planos sin iconos de canal", en:"Dashboard: flat numbers without channel icons" } },
+          { src: "/images/mon_old_v1_filters.png", caption: { es:"Filtros inconsistentes entre secciones", en:"Inconsistent filters between sections" } },
+          { src: "/images/mon_old_v1_detail.png", caption: { es:"Vista detalle con links poco visibles", en:"Detail view with hard-to-find links" } },
+          { src: "/images/mon_old_v1_kpi.png", caption: { es:"Vista completa con todos los problemas juntos", en:"Full view with all problems together" } },
+        ],
       },
-      /* ── RESEARCH ── */
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Investigación
+         ══════════════════════════════════════════ */
       {
         phase: "research",
-        icon: "👂", title: { es:"Lo que descubrimos en campo", en:"What we discovered in the field" },
-        content: { es:"Agendamos reuniones con supervisores y visitamos la oficina de un cliente. Lo que encontramos fue revelador — no es que no valoraran la data, sino que la consumían fuera de nuestra plataforma:", en:"We scheduled meetings with supervisors and visited a client's office. What we found was revealing — it wasn't that they didn't value the data, but they consumed it outside our platform:" },
+        icon: "👂", title: { es:"Investigación: lo que descubrimos en campo", en:"Research: what we discovered in the field" },
+        content: { es:"Agendamos reuniones con supervisores y visitamos la oficina de un cliente clave. Lo que encontramos cambió completamente nuestra hipótesis — el problema no era que no valoraran la data, sino que nuestra interfaz era tan mala que habían construido su propia solución:", en:"We scheduled meetings with supervisors and visited a key client's office. What we found completely changed our hypothesis — the problem wasn't that they didn't value the data, but that our interface was so bad they had built their own solution:" },
         bullets: {
-          es: ["✅ Valoraban la data — la usaban activamente para identificar problemas en tiempo real","🤝 Pero no dentro de nuestra plataforma — extraían todo por API a una herramienta externa","🖥️ Proyectaban la info en una pantalla gigante para que todos los supervisores la vieran","🚨 La herramienta externa tenía alarmas visuales que nuestro producto no ofrecía","💡 Esto confirmó que la información era valiosa — la forma de presentarla era el problema"],
-          en: ["✅ They valued the data — actively using it to identify real-time problems","🤝 But not inside our platform — they extracted everything via API to an external tool","🖥️ They projected the info on a big screen for all supervisors to see","🚨 The external tool had visual alarms our product didn't offer","💡 This confirmed the information was valuable — the presentation was the problem"],
+          es: ["✅ Valoraban la data — la usaban activamente todos los días para tomar decisiones en tiempo real","🖥️ La proyectaban en una pantalla gigante visible para todo el equipo de supervisores","🚨 La herramienta externa tenía alarmas visuales que cambiaban de color según umbrales — algo que nuestro producto no ofrecía","💡 Insight clave: la información era valiosa, la forma de presentarla era el único problema"],
+          en: ["✅ They valued the data — actively using it every day for real-time decisions","🖥️ They projected it on a big screen visible to the entire supervisor team","🚨 The external tool had visual alarms that changed color based on thresholds — something our product didn't offer","💡 Key insight: the information was valuable, the presentation was the only problem"],
         },
       },
-      /* ── GOALS ── */
       {
-        phase: "goals",
-        icon: "🎯", title: { es:"La apuesta", en:"The bet" },
-        content: { es:"Si mejoramos la experiencia lo suficiente, los usuarios no necesitarán herramientas externas. Definimos 4 objetivos:", en:"If we improve the experience enough, users won't need external tools. We defined 4 goals:" },
+        phase: "research",
+        icon: "🎯", title: { es:"Del insight a los objetivos", en:"From insight to goals" },
+        content: { es:"La visita de campo nos dio una dirección clara. Si los supervisores ya habían invertido esfuerzo en replicar nuestra data en otra herramienta, significaba que el valor estaba ahí — solo necesitábamos presentarlo mejor que la alternativa. Definimos 4 objetivos basados directamente en lo observado:", en:"The field visit gave us a clear direction. If supervisors had already invested effort replicating our data in another tool, it meant the value was there — we just needed to present it better than the alternative. We defined 4 goals based directly on what we observed:" },
         bullets: {
-          es: ["🏠 Traer a los usuarios de vuelta a la plataforma — eliminar la dependencia de herramientas externas","🤝 Hacer la información clara y rápida de consumir — que un vistazo sea suficiente","🚨 Implementar el sistema de alarmas que ya usaban afuera — alertas visuales configurables","🔗 Unificar filtros en toda la sección — consistencia total"],
-          en: ["🏠 Bring users back to the platform — eliminate external tool dependency","🤝 Make information clear and quick to consume — one glance should be enough","🚨 Implement the alarm system they already used externally — configurable visual alerts","🔗 Unify filters across the entire section — total consistency"],
+          es: ["🏠 Traer a los usuarios de vuelta — porque si la experiencia es mejor que la externa, no hay razón para salir","👁️ Información consumible de un vistazo — porque la proyectaban en una pantalla compartida y necesitaban lectura rápida","🚨 Sistema de alarmas configurable — porque ya lo usaban afuera y era su feature más valorada","🔗 Filtros unificados — porque la inconsistencia era la causa #1 de confusión"],
+          en: ["🏠 Bring users back — because if the experience is better than external, there's no reason to leave","👁️ Information consumable at a glance — because they projected it on a shared screen and needed quick reading","🚨 Configurable alarm system — because they already used it externally and it was their most valued feature","🔗 Unified filters — because inconsistency was the #1 cause of confusion"],
         },
       },
-      /* ── WIREFRAMES ── */
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Ideación
+         ══════════════════════════════════════════ */
       {
-        phase: "wireframes",
-        icon: "📝", title: { es:"Diseño de la solución", en:"Designing the solution" },
-        content: { es:"Reorganicé la información completamente. La nueva estructura priorizaba visibilidad inmediata y consistencia:", en:"I completely reorganized the information. The new structure prioritized immediate visibility and consistency:" },
-        image: "/images/mon_wireframe_2.png",
+        phase: "ideation",
+        icon: "📝", title: { es:"Ideación: ¿por qué esta estructura?", en:"Ideation: why this structure?" },
+        content: { es:"La decisión más importante fue reorganizar toda la información en columnas por estado de ticket. ¿Por qué? Porque los supervisores piensan en estados — '¿cuántos tickets están esperando asignación?' es la pregunta que hacen 50 veces al día. La versión anterior los obligaba a navegar entre vistas para responder algo que debería verse de un vistazo.\n\nDefiní 5 columnas — Abiertos, Asignados, Abordados, Cerrados e Ignorados — cada una con espacio para alarmas visuales. Elegí cards en vez de tablas porque las cards permiten escaneo visual rápido y se adaptan mejor a la proyección en pantallas grandes que los supervisores ya usaban.", en:"The most important decision was reorganizing all information into columns by ticket status. Why? Because supervisors think in states — 'how many tickets are waiting assignment?' is the question they ask 50 times a day. The previous version forced them to navigate between views to answer something that should be visible at a glance.\n\nI defined 5 columns — Open, Assigned, Attended, Closed and Ignored — each with space for visual alarms. I chose cards over tables because cards allow quick visual scanning and adapt better to the large screen projection supervisors already used." },
+        image: "/images/mon_wireframe_cards.png",
         bullets: {
           es: ["🔝 Filtros unificados arriba — una sola experiencia de filtrado para toda la sección","📊 KPIs principales siempre visibles: ticket más antiguo, promedio antigüedad, SLA","📋 Cards por cada estado de ticket con desglose por canal","🚨 Sistema de alarmas integrado en cada card"],
           en: ["🔝 Unified filters at top — one filtering experience for the entire section","📊 Main KPIs always visible: oldest ticket, average age, SLA","📋 Cards per ticket state with channel breakdown","🚨 Alarm system integrated into each card"],
         },
       },
-      /* ── PROTOTYPE ── */
       {
-        phase: "prototype",
+        phase: "ideation",
         icon: "💻", title: { es:"El prototipo", en:"The prototype" },
-        content: { es:"El prototipo implementó la visión completa: cards por estado con código de colores y alarmas visuales, KPIs por ejecutivo, y la flexibilidad que los supervisores necesitaban.", en:"The prototype implemented the full vision: state cards with color coding and visual alarms, KPIs per executive, and the flexibility supervisors needed." },
-        image: "/images/mon_prototype_columns.png",
-        bullets: {
-          es: ["🎨 Cards por estado: Abiertos, Esperando Asignación, Sin Abordar, Esperando Respuesta","📊 Cada card con desglose Agente/Bot y canales con iconos reconocibles","🚨 Alarmas visuales cuando los números superan umbrales configurables","🔀 Tabs para agrupar: Por Ejecutivo, Por Cuenta, Por Departamento"],
-          en: ["🎨 State cards: Open, Waiting Assignment, Unattended, Waiting Response","📊 Each card with Agent/Bot breakdown and channels with recognizable icons","🚨 Visual alarms when numbers exceed configurable thresholds","🔀 Tabs to group: By Executive, By Account, By Department"],
-        },
+        content: { es:"El prototipo implementó la visión completa. La decisión de incluir tabs (Por Ejecutivo, Por Cuenta, Por Departamento) vino directamente del research: los supervisores necesitaban ver la misma data agrupada de formas distintas según el momento del día.\n\nLas cards se expanden in-place mostrando desglose por ejecutivo — porque abrir una nueva vista rompía el flujo de monitoreo continuo. También agregué un panel lateral de previsualización de tickets para que pudieran revisar contenido sin salir de la vista general.", en:"The prototype implemented the full vision. The decision to include tabs (By Executive, By Account, By Department) came directly from research: supervisors needed to see the same data grouped differently depending on the time of day.\n\nCards expand in-place showing breakdown by executive — because opening a new view broke the continuous monitoring flow. I also added a side panel for ticket preview so they could review content without leaving the main view." },
+        images: [
+          { src: "/images/mon_proto_columns.png", caption: { es:"Cards por estado con alarmas y desglose por canal", en:"State cards with alarms and channel breakdown" } },
+          { src: "/images/mon_proto_expanded.png", caption: { es:"Card expandida con desglose por ejecutivo", en:"Expanded card with executive breakdown" } },
+          { src: "/images/mon_proto_detail.png", caption: { es:"Panel de previsualización de tickets", en:"Ticket preview panel" } },
+        ],
+        figmaLink: "https://www.figma.com/proto/wcEPfz9xRPJZaGWILTHoTT/METRI.-Monitoreo-3.0--En-Desarrollo---Copy-?node-id=6405-10462&node-type=frame&viewport=2408%2C445%2C0.31&t=8vqWBvjqgumEmjfK-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6405%3A10462&show-proto-sidebar=1",
       },
-      {
-        phase: "prototype",
-        icon: "🖥️", title: { es:"Prototipo interactivo", en:"Interactive prototype" },
-        content: { es:"Explora el prototipo completo en Figma. Navega por las pantallas para ver la experiencia rediseñada en detalle:", en:"Explore the full prototype in Figma. Navigate through the screens to see the redesigned experience in detail:" },
-        figmaEmbed: "https://www.figma.com/proto/wcEPfz9xRPJZaGWILTHoTT/METRI.-Monitoreo-3.0--En-Desarrollo---Copy-?node-id=6405-10462&node-type=frame&viewport=2408%2C445%2C0.31&t=8vqWBvjqgumEmjfK-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6405%3A10462&show-proto-sidebar=1",
-      },
-      /* ── ITERATION ── */
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Iteración
+         ══════════════════════════════════════════ */
       {
         phase: "iteration",
-        icon: "💭", title: { es:"Primera encuesta: feedback dividido", en:"First survey: divided feedback" },
-        content: { es:"Lanzamos una encuesta in-app preguntando '¿Qué te pareció la actualización de esta sección?'. Los resultados nos obligaron a iterar:", en:"We launched an in-app survey asking 'What did you think of this section update?'. The results forced us to iterate:" },
-        stat: "67%",
-        statLabel: { es:"Respuestas positivas en primera encuesta", en:"Positive responses in first survey" },
-        image: "/images/mon_survey_67.png",
+        icon: "💭", title: { es:"Primera encuesta: el diseño no era perfecto", en:"First survey: the design wasn't perfect" },
+        content: { es:"Lanzamos una encuesta in-app preguntando '¿Qué tan completa te parece esta vista?'. Los resultados confirmaron que íbamos en la dirección correcta, pero que había problemas importantes por resolver:", en:"We launched an in-app survey asking 'How complete does this view feel?'. The results confirmed we were heading in the right direction, but there were important problems to solve:" },
+        stat: "3.9/5",
+        statLabel: { es:"Promedio de 37 participantes — 5 dieron 1 estrella", en:"Average from 37 participants — 5 gave 1 star" },
+        image: "/images/mon_survey_complete.png",
         bullets: {
-          es: ["😐 67% positivo, 33% negativo — opiniones divididas","🔍 No encontraban el botón para ver detalle de tickets","🏢 Pedían agrupar tickets por Departamento — necesitaban ver sus equipos"],
-          en: ["😐 67% positive, 33% negative — divided opinions","🔍 Couldn't find the button to see ticket details","🏢 They wanted to group tickets by Department — needed to see their teams"],
-        },
-      },
-      {
-        phase: "iteration",
-        icon: "🔧", title: { es:"Escuchar e iterar", en:"Listen and iterate" },
-        content: { es:"Tomamos cada punto del feedback e implementamos cambios concretos. No asumimos — escuchamos:", en:"We took each feedback point and implemented concrete changes. We didn't assume — we listened:" },
-        bullets: {
-          es: ["👁️ Se hizo más prominente el botón de detalle — ahora visible sin scroll","🏢 Se añadió tab de agrupación por Departamento","📊 Se mejoró el preview de columna — más información sin hacer click","🎨 Se refinaron los colores y estados de las alarmas visuales"],
-          en: ["👁️ Made ticket detail button more prominent — now visible without scrolling","🏢 Added Department grouping tab","📊 Improved column preview — more information without clicking","🎨 Refined colors and visual alarm states"],
+          es: ["😐 3.9/5 con 37 respuestas — bueno pero no suficiente","⭐ 5 participantes dieron 1 estrella — una señal que no podíamos ignorar","🔍 Problema #1: no encontraban el botón para ver detalle de tickets","🏢 Problema #2: pedían agrupar por Departamento — no lo habíamos incluido inicialmente"],
+          en: ["😐 3.9/5 from 37 responses — good but not enough","⭐ 5 participants gave 1 star — a signal we couldn't ignore","🔍 Problem #1: couldn't find the button to see ticket details","🏢 Problem #2: requested Department grouping — we hadn't included it initially"],
         },
       },
       {
         phase: "iteration",
-        icon: "📈", title: { es:"Segunda encuesta: el salto", en:"Second survey: the leap" },
-        content: { es:"Implementamos los cambios y volvimos a medir. La diferencia fue contundente:", en:"We implemented the changes and measured again. The difference was decisive:" },
-        stat: "93%",
-        statLabel: { es:"Respuestas positivas en segunda encuesta", en:"Positive responses in second survey" },
-        statDelta: { es:"↑ 26 puntos vs primera encuesta", en:"↑ 26 points vs first survey" },
-        image: "/images/mon_survey_93.png",
+        icon: "🔧", title: { es:"Iterar y validar", en:"Iterate and validate" },
+        content: { es:"Cada cambio respondió directamente a un hallazgo de la encuesta. No asumí — dejé que la data guiara las decisiones. Tras implementar los cambios, medimos de nuevo con '¿Qué tan útiles te parecen estas métricas?':", en:"Each change responded directly to a survey finding. I didn't assume — I let the data guide the decisions. After implementing the changes, we measured again with 'How useful do you find these metrics?':" },
+        stat: "4.2/5",
+        statLabel: { es:"Segunda encuesta: 24 participantes — 18 dieron 5 estrellas (75%)", en:"Second survey: 24 participants — 18 gave 5 stars (75%)" },
+        statDelta: { es:"↑ 0.3 puntos vs primera encuesta", en:"↑ 0.3 points vs first survey" },
+        image: "/images/mon_survey_useful.png",
         bullets: {
-          es: ["🎉 93% positivo — de 14 respuestas","✅ Solo 1 negativa y no estaba relacionada","📊 Más participación que en la primera ronda"],
-          en: ["🎉 93% positive — from 14 responses","✅ Only 1 negative and it wasn't related","📊 More participation than the first round"],
+          es: ["👁️ Botón de detalle más prominente y visible sin scroll — el 100% de los que dieron 1 estrella no lo encontraban","🏢 Tab de agrupación por Departamento — era la forma natural en que organizaban sus equipos","📊 Más información en el preview de columna — para reducir la necesidad de hacer click","🎉 Resultado: de 3.9 a 4.2 — la iteración basada en feedback real cerró la brecha"],
+          en: ["👁️ Detail button more prominent and visible without scrolling — 100% of 1-star respondents couldn't find it","🏢 Department grouping tab — that was the natural way they organized their teams","📊 More information in column preview — to reduce the need to click","🎉 Result: from 3.9 to 4.2 — feedback-driven iteration closed the gap"],
         },
         highlight: true,
       },
-      /* ── RESULTS ── */
+
+      /* ══════════════════════════════════════════
+         3. LA SOLUCIÓN Y RESULTADOS
+         ══════════════════════════════════════════ */
       {
         phase: "results",
-        icon: "🏆", title: { es:"El impacto", en:"The impact" },
-        content: { es:"El rediseño transformó la relación de los supervisores con la plataforma:", en:"The redesign transformed the relationship supervisors had with the platform:" },
-        stat: { es:"67% → 93%", en:"67% → 93%" },
-        statLabel: { es:"Evolución de satisfacción entre iteraciones", en:"Satisfaction evolution between iterations" },
+        icon: "🎬", title: { es:"La Solución Final", en:"The Final Solution" },
+        content: { es:"Un dashboard de monitoreo en tiempo real con dark mode, diseñado para ser proyectado en pantallas compartidas. Cards por estado de ticket con desglose por canal, alarmas visuales configurables, y tres niveles de agrupación:", en:"A real-time monitoring dashboard with dark mode, designed to be projected on shared screens. State cards with channel breakdown, configurable visual alarms, and three grouping levels:" },
+        image: "/images/mon_final_demo.gif",
+        highlight: true,
+      },
+      {
+        phase: "results",
+        icon: "🏆", title: { es:"Resultados", en:"Results" },
+        content: { es:"El rediseño no solo mejoró la experiencia — resolvió un problema estructural del producto. Los clientes dejaron de necesitar herramientas externas, lo que nos permitió reducir el esfuerzo en mantener sistemas de exportación y APIs costosas que existían solo porque la interfaz no cumplía su función:", en:"The redesign didn't just improve the experience — it solved a structural product problem. Clients stopped needing external tools, which allowed us to reduce effort maintaining export systems and costly APIs that existed only because the interface wasn't doing its job:" },
+        stat: { es:"3.9 → 4.2", en:"3.9 → 4.2" },
+        statLabel: { es:"Evolución de satisfacción entre iteraciones (de 5)", en:"Satisfaction evolution between iterations (out of 5)" },
+        image: "/images/mon_final_dark.png",
         bullets: {
-          es: ["🏠 Los usuarios dejaron de usar la plataforma externa — la info ahora vivía donde debía","🧠 Pidieron incluir MÁS datos porque ahora sí los entendían","🚨 El sistema de alarmas se expandió a otras secciones del producto","📈 De 67% a 93% de satisfacción — evidencia de que escuchar funciona"],
-          en: ["🏠 Users stopped using the external platform — data now lived where it should","🧠 They asked for MORE data because they could finally understand it","🚨 The alarm system expanded to other product sections","📈 From 67% to 93% satisfaction — proof that listening works"],
+          es: ["🏠 Los usuarios dejaron de usar la herramienta externa — la info ahora vivía donde debía","💸 Se redujo la necesidad de mantener sistemas de exportación y APIs costosas — la interfaz ahora cumplía su función","🧠 Pidieron incluir MÁS datos porque ahora sí los entendían y querían profundizar","🚨 El sistema de alarmas se convirtió en patrón y se expandió a otras secciones del producto","📈 Satisfacción de 3.9 a 4.2 con 75% de puntuaciones máximas en la segunda medición"],
+          en: ["🏠 Users stopped using the external tool — data now lived where it should","💸 Reduced the need to maintain costly export systems and APIs — the interface now did its job","🧠 They asked for MORE data because they could finally understand it and wanted to go deeper","🚨 The alarm system became a pattern and expanded to other product sections","📈 Satisfaction from 3.9 to 4.2 with 75% maximum scores in the second measurement"],
         },
         highlight: true,
       },
