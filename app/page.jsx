@@ -134,7 +134,7 @@ const QUERIES = {
 /* ═══════════════════════════════════════════════════════════════
    COLORS
    ═══════════════════════════════════════════════════════════════ */
-const C = { titleBar:"#000080", titleGrad:"linear-gradient(90deg,#000080,#1084D0)", titleText:"#FFF", winBg:"#C0C0C0", outset:"#DFDFDF", inset:"#808080", face:"#C0C0C0", desktop:"#008080", chatBg:"#FFFFFF", accent:"#000080", txt:"#000", txtMuted:"#666", botBubble:"#EDEDFF", userBubble:"#000080", userTxt:"#FFF" };
+const C = { titleBar:"#000080", titleGrad:"linear-gradient(90deg,#000080,#1084D0)", titleText:"#FFF", winBg:"#C0C0C0", outset:"#DFDFDF", inset:"#808080", face:"#C0C0C0", desktop:"#000000", chatBg:"#FFFFFF", accent:"#000080", txt:"#000", txtMuted:"#666", botBubble:"#EDEDFF", userBubble:"#000080", userTxt:"#FFF" };
 
 /* ═══════════════════════════════════════════════════════════════
    STARFIELD SCREENSAVER (Canvas)
