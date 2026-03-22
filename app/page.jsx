@@ -33,7 +33,7 @@ IMPORTANTE: NUNCA menciones el nombre "Adereso" en tus respuestas. Usa "Helpdesk
 IxDF — Interaction Design Foundation (Product Used: Adoption & Appropriation, UI Design Patterns for Software, Gestalt Psychology and Web Design, Agile Methods for UX Design, Journey Mapping, Design Thinking), Platzi — CX Research & UX Testing 2024, Figma — Intro to Design Systems 2023, IBM — Agile Dev and Scrum 2023, FutureLearn — Digital Skills: UX 2021, Webflow 101, Microsoft Power BI
 
 ═══ TRAYECTORIA ═══
-1. HELPDESK SAAS (Oct 2023-Presente) Santiago — Product Designer (UX/UI) & Product Owner (oct 2025+). Sole designer. Plataforma omnicanal de customer service con IA. 150+ clientes enterprise en retail, finanzas y telecom. Creó Diamond Design System, diseñó features con IA (bot flow builders, Adereso GPT), diseñó app móvil, rediseñó analytics. Como PO: definió KPIs trimestrales, coordinó Eng + Finance + CS + Support. Implementó surveys de adopción, tracking DAU/MAU con Amplitude. Construyó sistema de documentación automatizado con IA.
+1. HELPDESK SAAS (Oct 2023-Presente) Santiago — Product Designer (UX/UI) & Product Owner (oct 2025+). Sole designer. Plataforma omnicanal de customer service con IA. 150+ clientes enterprise en retail, finanzas y telecom. Creó Diamond Design System, diseñó features con IA (bot flow builders, Platform GPT), diseñó app móvil, rediseñó analytics. Como PO: definió KPIs trimestrales, coordinó Eng + Finance + CS + Support. Implementó surveys de adopción, tracking DAU/MAU con Amplitude. Construyó sistema de documentación automatizado con IA.
 2. PRICEMAKER (Oct 2021-Sep 2023) Santiago — Product Designer · UX/UI · Product Owner. SaaS B2B de pricing y promociones para CPG. Research end-to-end, service blueprints, handoff a desarrollo. Comunicación directa con stakeholders, backlog en Notion, QA. Ajustes front-end para apoyar al equipo de desarrollo.
 3. VALIT (Mar 2021-Sep 2021) Santiago — Product Manager, Product Designer & Art Director. Equipo de 3.
 4. DJ SCHOOL MUSIC ACADEMY (Feb 2020-Jul 2020) Santiago — Art Director. Branding. Web Design.
@@ -119,6 +119,7 @@ const QUERIES = {
     { icon:"🛠️", text:"¿Qué herramientas manejas?" },
     { icon:"🏢", text:"¿Qué haces actualmente?" },
     { icon:"🤝", text:"¿Cómo puedo contactarte?" },
+    { icon:"💰", text:"Cuéntame sobre el sistema de Billing" },
   ],
   en: [
     { icon:"👋", text:"Who is Yayo?" },
@@ -128,6 +129,7 @@ const QUERIES = {
     { icon:"🛠️", text:"What tools do you use?" },
     { icon:"🏢", text:"What do you do currently?" },
     { icon:"🤝", text:"How can I contact you?" },
+    { icon:"💰", text:"Tell me about the Billing system" },
   ],
 };
 
@@ -305,6 +307,24 @@ function parseQuickReplies(text) {
   return { cleanText, replies };
 }
 
+/* Parse **bold** and *italic* into React elements */
+function formatRichText(text) {
+  if (!text) return text;
+  // Split by **bold** and *italic* markers
+  const parts = [];
+  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*)/g;
+  let last = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index));
+    if (match[2]) parts.push(<strong key={match.index}>{match[2]}</strong>);
+    else if (match[3]) parts.push(<em key={match.index}>{match[3]}</em>);
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? parts : text;
+}
+
 function Bubble({ msg, onQuickReply, isLast, loading }) {
   const u = msg.role === "user";
   const { cleanText, replies } = !u ? parseQuickReplies(msg.content) : { cleanText: msg.content, replies: [] };
@@ -381,7 +401,7 @@ function CaseStudyCard({ galleryKey, lang, onOpen }) {
         </div>
         <div style={{ padding:"10px 12px",display:"flex",alignItems:"center",gap:10 }}>
           <div style={{ flex:1 }}>
-            <div style={{ fontSize:11,color:C.txt,lineHeight:1.4 }}>{p.company} — {p.period}</div>
+            <div style={{ fontSize:11,color:C.txt,lineHeight:1.4 }}>{p.company} — {t(p.period)}</div>
             <div style={{ fontSize:10,color:C.txtMuted,marginTop:2 }}>{p.role}</div>
             <div style={{ fontSize:10,color:C.txtMuted,marginTop:2 }}>{p.slides.length} slides</div>
           </div>
@@ -445,7 +465,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
       <div onClick={e => e.stopPropagation()} style={{ background:C.winBg,border:"2px outset "+C.outset,width:"94vw",maxWidth:720,height:"88vh",display:"flex",flexDirection:"column",boxShadow:"4px 4px 0 rgba(0,0,0,.3)" }}>
         {/* Title bar */}
         <div style={{ background:C.titleGrad,color:C.titleText,padding:"4px 8px",fontSize:12,fontWeight:"bold",display:"flex",justifyContent:"space-between",alignItems:"center",flexShrink:0 }}>
-          <span>📁 {t(p.title)} — {p.company} ({p.period})</span>
+          <span>📁 {t(p.title)} — {p.company} ({t(p.period)})</span>
           <div style={{display:"flex",gap:6,alignItems:"center"}}>
             <span style={{fontSize:10,opacity:.8}}>{p.role}</span>
             {onClose && <div onClick={onClose} style={{width:16,height:16,background:C.face,border:"1px outset "+C.outset,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,cursor:"pointer",fontWeight:"bold"}}>✕</div>}
@@ -482,7 +502,7 @@ function CaseStudyViewer({ project, lang, onClose }) {
           </div>
 
         {/* Content text */}
-        {s.content && <div style={{fontSize:13.5,lineHeight:1.65,color:C.txt,marginBottom:s.bullets||s.atoms||s.screens||s.profiles||s.flow||s.tags||s.image||s.images||s.stat?12:0,padding: s.highlight?"12px 16px":0,background:s.highlight?"#FFFFF0":undefined,border:s.highlight?"1px solid #E8E8C0":undefined}}>{t(s.content)}</div>}
+        {s.content && <div style={{fontSize:13.5,lineHeight:1.65,color:C.txt,whiteSpace:"pre-wrap",marginBottom:s.bullets||s.atoms||s.screens||s.profiles||s.flow||s.tags||s.image||s.images||s.stat?12:0,padding: s.highlight?"12px 16px":0,background:s.highlight?"#FFFFF0":undefined,border:s.highlight?"1px solid #E8E8C0":undefined}}>{formatRichText(t(s.content))}</div>}
 
         {/* Stat highlight layout */}
         {s.stat && (
@@ -494,8 +514,8 @@ function CaseStudyViewer({ project, lang, onClose }) {
         )}
 
         {/* Single image */}
-        {s.image && <div style={{margin:"8px 0",background:"transparent",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",justifyContent:"center"}}>
-          <ClickableImage src={s.image} alt={t(s.title)} style={{maxWidth:"100%",maxHeight:320,objectFit:"contain",display:"block"}} />
+        {s.image && <div style={{margin:"8px 0",background:s.image.endsWith(".svg")?"#fff":"transparent",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",justifyContent:"center",padding:s.image.endsWith(".svg")?"8px 4px":0}}>
+          <ClickableImage src={s.image} alt={t(s.title)} style={{maxWidth:"100%",maxHeight:380,objectFit:"contain",display:"block"}} />
         </div>}
 
         {/* Multi-image grid */}
@@ -551,7 +571,12 @@ function CaseStudyViewer({ project, lang, onClose }) {
         {s.tags && <div style={{display:"flex",flexWrap:"wrap",gap:4,marginBottom:10}}>{s.tags.map((tag,i)=><span key={i} style={tagStyle}>{tag}</span>)}</div>}
 
         {/* Bullets */}
-        {s.bullets && <div style={{marginBottom:8}}>{t(s.bullets).map((b,i)=><div key={i} style={bulletStyle}>{b}</div>)}</div>}
+        {s.bullets && <div style={{marginBottom:8}}>{t(s.bullets).map((b,i)=><div key={i} style={bulletStyle}>{formatRichText(b)}</div>)}</div>}
+
+        {/* Bottom image (after bullets) */}
+        {s.bottomImage && <div style={{margin:"8px 0",background:s.bottomImage.endsWith(".svg")?"#fff":"transparent",border:"2px inset "+C.inset,overflow:"hidden",display:"flex",justifyContent:"center",padding:s.bottomImage.endsWith(".svg")?"8px 4px":0}}>
+          <ClickableImage src={s.bottomImage} alt={t(s.title)} style={{maxWidth:"100%",maxHeight:380,objectFit:"contain",display:"block"}} />
+        </div>}
 
         {/* Profiles (for journey map slide) */}
         {s.profiles && <div style={{marginBottom:8,padding:"8px 10px",background:"#F4F4FF",border:"1px solid #D8D8E8"}}>
@@ -766,6 +791,7 @@ export default function YayoPortfolio() {
         if (lower.includes("monitoreo")||lower.includes("monitoring")) hintKey = "monitoreo";
         else if (lower.includes("diamond")||lower.includes("design system")) hintKey = "dds";
         else if (lower.includes("rendimiento")||lower.includes("performance")||lower.includes("team performance")) hintKey = "rendimiento";
+        else if (lower.includes("billing")||lower.includes("factur")||lower.includes("invoice")||lower.includes("financial")||lower.includes("spreadsheet")) hintKey = "billing";
       }
       if (hintKey) {
         setMsgsSync(prev => [...prev, { role:"gallery-hint", galleryKey: hintKey }]);
@@ -834,6 +860,7 @@ export default function YayoPortfolio() {
         if(lower.includes("monitoreo")||lower.includes("monitoring")||lower.includes("analytics")||lower.includes("dashboard")||lower.includes("productiv")) apiHintKey="monitoreo";
         else if(lower.includes("diamond")||lower.includes("design system")||lower.includes("dds")) apiHintKey="dds";
         else if(lower.includes("rendimiento")||lower.includes("performance")||lower.includes("team performance")) apiHintKey="rendimiento";
+        else if(lower.includes("billing")||lower.includes("factur")||lower.includes("invoice")||lower.includes("financial")||lower.includes("spreadsheet")) apiHintKey="billing";
         if (apiHintKey) setMsgsSync(prev => [...prev, { role:"gallery-hint", galleryKey: apiHintKey }]);
       }catch{
         // API failed — try KB with looser match or show offline message
@@ -870,8 +897,8 @@ export default function YayoPortfolio() {
 
   const projectMenuItems = [
     ...Object.entries(PROJECTS).filter(([,p]) => !p.hidden).map(([key, p]) => ({
-      icon: {monitoreo:"📊",dds:"💎",rendimiento:"📈"}[key] || "📁",
-      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : key === "rendimiento" ? (lang==="es"?"Rendimiento de Equipo":"Team Performance") : p.title[lang],
+      icon: {monitoreo:"📊",dds:"💎",rendimiento:"📈",billing:"💰"}[key] || "📁",
+      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : key === "rendimiento" ? (lang==="es"?"Rendimiento de Equipo":"Team Performance") : key === "billing" ? (lang==="es"?"Spreadsheets → Sistema financiero":"Spreadsheets → Financial system") : p.title[lang],
       action: () => { setGallery(key); setFresh(false); },
     })),
   ];

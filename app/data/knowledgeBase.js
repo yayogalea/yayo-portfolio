@@ -5,8 +5,8 @@ export const KNOWLEDGE_BASE = [
   {
     keywords: ["quién","quien","who","yayo","about","sobre ti","presentat","introduce"],
     response: {
-      es: "¡Hola! Soy Yayo (Gabriel González Galea), Product Owner y Designer con +8 años de experiencia 🤠 Nací en Venezuela y hoy vivo en Santiago, Chile. Soy autodidacta en UX/UI, con una licenciatura en Diseño Gráfico. Me apasiona simplificar lo complejo, y mi religión es el Design Thinking. Fuera del trabajo tengo 2 perros, toco bajo y juego videogames 🎮\n\n[>>¿Cuál es tu experiencia?]\n[>>¿Qué proyectos has hecho?]\n[>>¿Qué herramientas usas?]\n[>>¿Cómo puedo contactarte?]",
-      en: "Hi! I'm Yayo (Gabriel González Galea), a Product Owner & Designer with 8+ years of experience 🤠 Born in Venezuela, now based in Santiago, Chile. Self-taught in UX/UI with a Bachelor's in Graphic Design. I'm passionate about simplifying complexity, and Design Thinking is my religion. Outside work I have 2 dogs, play bass and videogames 🎮\n\n[>>What's your experience?]\n[>>What projects have you done?]\n[>>What tools do you use?]\n[>>How can I contact you?]",
+      es: "¡Hola! Soy Yayo (Gabriel González Galea), Product Owner y Designer con +10 años de experiencia en diseño y +5 como Product Designer 🤠 Nací en Venezuela y hoy vivo en Santiago, Chile. Soy autodidacta en UX/UI, con una licenciatura en Diseño Gráfico. Me apasiona simplificar lo complejo, y mi religión es el Design Thinking. Fuera del trabajo tengo 2 perros, toco bajo y juego videogames 🎮\n\n[>>¿Cuál es tu experiencia?]\n[>>¿Qué proyectos has hecho?]\n[>>¿Qué herramientas usas?]\n[>>¿Cómo puedo contactarte?]",
+      en: "Hi! I'm Yayo (Gabriel González Galea), a Product Owner & Designer with 10+ years in design and 5+ as Product Designer 🤠 Born in Venezuela, now based in Santiago, Chile. Self-taught in UX/UI with a Bachelor's in Graphic Design. I'm passionate about simplifying complexity, and Design Thinking is my religion. Outside work I have 2 dogs, play bass and videogames 🎮\n\n[>>What's your experience?]\n[>>What projects have you done?]\n[>>What tools do you use?]\n[>>How can I contact you?]",
     },
   },
   {
@@ -41,8 +41,8 @@ export const KNOWLEDGE_BASE = [
   {
     keywords: ["diamond","design system","dds","sistema de diseño","componentes","components","atomic","atómico","atomico","8pt","montserrat"],
     response: {
-      es: "El Diamond Design System nació para resolver un problema sistémico 💎 Una plataforma CX con múltiples productos que se sentían como apps distintas.\n\nCuando llegué: pocos componentes reutilizables, frameworks distintos por sección, UI incoherente. Construí el DS con Atomic Design, retícula 8pts y Montserrat. Lo más importante fue la filosofía de handoff — que el desarrollador sea un traductor, no un intérprete.\n\n[>>¿Cómo documentaste el handoff?]\n[>>¿Sigue en evolución?]\n[>>Háblame de otro proyecto]",
-      en: "The Diamond Design System was born to solve a systemic problem 💎 A CX platform with multiple products that felt like different apps.\n\nWhen I arrived: few reusable components, different frameworks per section, incoherent UI. I built the DS with Atomic Design, 8pt grid and Montserrat. The most important part was the handoff philosophy — the developer should be a translator, not an interpreter.\n\n[>>How did you document the handoff?]\n[>>Is it still evolving?]\n[>>Tell me about another project]",
+      es: "El Diamond Design System nació para resolver un problema sistémico 💎 Una plataforma CX con múltiples productos que se sentían como apps distintas.\n\nCuando llegué: pocos componentes reutilizables, frameworks distintos por sección, UI incoherente. Construí el DS con Atomic Design, retícula 8pts, Rubik y Karla. Lo más importante fue la filosofía de handoff — que el desarrollador sea un traductor, no un intérprete.\n\n[>>¿Cómo documentaste el handoff?]\n[>>¿Sigue en evolución?]\n[>>Háblame de otro proyecto]",
+      en: "The Diamond Design System was born to solve a systemic problem 💎 A CX platform with multiple products that felt like different apps.\n\nWhen I arrived: few reusable components, different frameworks per section, incoherent UI. I built the DS with Atomic Design, 8pt grid, Rubik and Karla. The most important part was the handoff philosophy — the developer should be a translator, not an interpreter.\n\n[>>How did you document the handoff?]\n[>>Is it still evolving?]\n[>>Tell me about another project]",
     },
     gallery: "dds",
   },
@@ -89,14 +89,25 @@ export const KNOWLEDGE_BASE = [
     },
   },
   {
-    keywords: ["sigue","sí","si","dale","cuéntame más","tell me more","go on","continue","more","más"],
-    response: null,
+    keywords: ["billing","factur","invoice","financial","spreadsheet","excel","finanza","notas de venta","backoffice","meta bag","bolsa"],
+    response: {
+      es: "El sistema de Billing fue un proyecto 0→1 donde diseñé un backoffice completo de facturación para reemplazar un proceso que dependía 100% de Google Sheets 💰\n\nEl equipo de finanzas gestionaba clientes corporativos con Excel: cruzaban consumo de activos con precios, calculaban topes, excedentes, impuestos y conversión de moneda — todo a mano. El cierre mensual tomaba DÍAS.\n\nDiseñé un sistema que unifica 4 fuentes de datos en una sola interfaz, con edición inline, plantillas reutilizables, generación automática de notas de venta multi-moneda, y un subsistema de bolsas Meta prepago con 30 combinaciones posibles controladas por UX.\n\n[>>¿Qué fue lo más complejo?]\n[>>¿Cuál fue el impacto?]\n[>>¿Qué aprendiste?]\n[>>Háblame de otro proyecto]",
+      en: "The Billing system was a 0→1 project where I designed a complete billing backoffice to replace a process that was 100% dependent on Google Sheets 💰\n\nThe finance team managed corporate clients with Excel: cross-referencing asset consumption with prices, calculating caps, overages, taxes and currency conversion — all by hand. Monthly closing took DAYS.\n\nI designed a system that unifies 4 data sources into a single interface, with inline editing, reusable templates, automatic multi-currency sales note generation, and a Meta prepaid bags subsystem with 30 possible combinations controlled by UX.\n\n[>>What was the most complex part?]\n[>>What was the impact?]\n[>>What did you learn?]\n[>>Tell me about another project]",
+    },
+    gallery: "billing",
+  },
+  {
+    keywords: ["sigue","dale","cuéntame más","tell me more","go on","continue"],
+    response: {
+      es: "¡Claro! ¿Sobre qué te gustaría saber más? Puedes preguntarme sobre mis proyectos, experiencia, herramientas o cómo contactarme 🤠\n\n[>>¿Qué proyectos has hecho?]\n[>>¿Cuál es tu experiencia?]\n[>>¿Qué herramientas usas?]\n[>>¿Cómo puedo contactarte?]",
+      en: "Sure! What would you like to know more about? You can ask me about my projects, experience, tools or how to contact me 🤠\n\n[>>What projects have you done?]\n[>>What's your experience?]\n[>>What tools do you use?]\n[>>How can I contact you?]",
+    },
   },
   {
     keywords: ["proyecto","project","hecho","done","portafolio","portfolio","cases","casos"],
     response: {
-      es: "Mis proyectos principales 🚀\n\n📊 Monitoreo 2.0 — Convertí datos ignorados en decisiones en tiempo real. De 67% a 93% de satisfacción.\n📈 Rendimiento de Equipo — Rediseñé el centro de analytics de productividad. Datos crudos convertidos en información accionable.\n💎 Diamond Design System — Unifiqué una experiencia fragmentada con Atomic Design.\n\nCada uno demuestra una competencia distinta: research + iteración, definición de datos + data viz, y pensamiento sistémico.\n\n[>>Cuéntame del Monitoreo 2.0]\n[>>Cuéntame del Rendimiento de Equipo]\n[>>¿Qué es el Diamond Design System?]",
-      en: "My main projects 🚀\n\n📊 Monitoring 2.0 — Turned ignored data into real-time decisions. From 67% to 93% satisfaction.\n📈 Team Performance — Redesigned the productivity analytics hub. Raw data turned into actionable information.\n💎 Diamond Design System — Unified a fragmented experience with Atomic Design.\n\nEach one demonstrates a different competency: research + iteration, data definition + data viz, and systems thinking.\n\n[>>Tell me about Monitoring 2.0]\n[>>Tell me about Team Performance]\n[>>What is the Diamond Design System?]",
+      es: "Mis proyectos principales 🚀\n\n📊 Monitoreo 2.0 — Convertí datos ignorados en decisiones en tiempo real. De 67% a 93% de satisfacción.\n📈 Rendimiento de Equipo — Rediseñé el centro de analytics de productividad. Datos crudos convertidos en información accionable.\n💎 Diamond Design System — Unifiqué una experiencia fragmentada con Atomic Design.\n💰 Billing — De spreadsheets frágiles a un sistema financiero robusto. Cierre mensual de días a horas.\n\nCada uno demuestra una competencia distinta: research + iteración, definición de datos + data viz, pensamiento sistémico, y diseño 0→1.\n\n[>>Cuéntame del Monitoreo 2.0]\n[>>Cuéntame del Rendimiento de Equipo]\n[>>¿Qué es el Diamond Design System?]\n[>>Cuéntame sobre el Billing]",
+      en: "My main projects 🚀\n\n📊 Monitoring 2.0 — Turned ignored data into real-time decisions. From 67% to 93% satisfaction.\n📈 Team Performance — Redesigned the productivity analytics hub. Raw data turned into actionable information.\n💎 Diamond Design System — Unified a fragmented experience with Atomic Design.\n💰 Billing — From fragile spreadsheets to a robust financial system. Monthly close from days to hours.\n\nEach one demonstrates a different competency: research + iteration, data definition + data viz, systems thinking, and 0→1 design.\n\n[>>Tell me about Monitoring 2.0]\n[>>Tell me about Team Performance]\n[>>What is the Diamond Design System?]\n[>>Tell me about Billing]",
     },
   },
 ];

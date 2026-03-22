@@ -148,7 +148,7 @@ export const PROJECTS = {
     title: { es: "Unificando una experiencia fragmentada", en: "Unifying a fragmented experience" },
     company: "CX Platform",
     role: "Product Designer",
-    period: "2023 — Presente",
+    period: { es: "2023 — Presente", en: "2023 — Present" },
     competency: { es: "Pensamiento sistémico · Colaboración con desarrollo", en: "Systems thinking · Dev collaboration" },
     figma: "https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo?node-id=0-501",
     slides: [
@@ -401,6 +401,252 @@ export const PROJECTS = {
           en: ["🔀 From isolated categories to combinable filters — analysts can now freely cross departments, accounts and agents","📊 From confusing charts to purposeful dashboards — each section answers a specific business question","📖 Documentation as a bridge — Figma documentation aligned design and development, reducing back-and-forth","🚀 Next step: filters by ticket data — custom fields that will enable analysis by specific topics per operation","🔄 Phased project — the MVP already delivers value while next iterations are being built"],
         },
         highlight: true,
+      },
+    ],
+  },
+
+  /* ═══════════════════════════════════════════════════════════════
+     BILLING — From spreadsheets to a robust financial system
+     ═══════════════════════════════════════════════════════════════ */
+  billing: {
+    title: { es: "De spreadsheets frágiles a un sistema financiero robusto", en: "From fragile spreadsheets to a robust financial system" },
+    company: "SaaS B2B",
+    role: "Product Designer",
+    period: { es: "2025 — Presente", en: "2025 — Present" },
+    competency: { es: "Arquitectura de información · Dominio financiero · Diseño 0→1", en: "Information architecture · Financial domain · 0→1 Design" },
+    slides: [
+      /* ══════════════════════════════════════════
+         1. EL DESAFÍO
+         ══════════════════════════════════════════ */
+      {
+        phase: "context",
+        icon: "💰", title: { es:"El Desafío", en:"The Challenge" },
+        content: { es:"El equipo de finanzas de una plataforma SaaS B2B de atención al cliente gestionaba **toda la facturación de clientes corporativos en Google Sheets**. El cierre mensual tomaba días de trabajo manual: cruzar consumo de activos digitales con precios y contratos, calcular topes, excedentes, impuestos y conversión de moneda — *todo a mano, con alto riesgo de error*.\n\nEl detalle del consumo se obtenía directo desde la plataforma, pero el equipo debía **copiar valores a mano** hacia los Excel de facturación. La comparación entre meses se volvía compleja y generaba errores frecuentes.\n\nA esto se sumaba otro problema: **traducir lo vendido por el equipo comercial a lo que realmente se facturaba**. Comercial se tomaba libertades al armar los planes para hacerlos más atractivos, generando PDFs o documentos Word que no se traducían directamente al sistema de Excel de finanzas. La información terminaba transmitiéndose por *\"interpretación\"* de la persona responsable.", en:"The finance team of a B2B SaaS customer service platform managed **all corporate client billing in Google Sheets**. Monthly closing took days of manual work: cross-referencing digital asset consumption with prices and contracts, calculating caps, overages, taxes and currency conversion — *all by hand, with high error risk*.\n\nConsumption details came directly from the platform, but the team had to **manually copy values** into billing spreadsheets. Month-over-month comparison became complex and generated frequent errors.\n\nOn top of that, there was another problem: **translating what the sales team sold to what was actually billed**. Sales took liberties when building plans to make them more attractive, generating PDFs or Word documents that didn't translate directly to the finance team's Excel system. Information ended up being transmitted through *\"interpretation\"* by the person responsible." },
+        image: "/images/billing_challenge_flow.svg",
+        tags: ["Billing","0→1","FinOps","SaaS B2B","Information Architecture"],
+      },
+
+      /* ══════════════════════════════════════════
+         2. EL DOLOR REAL
+         ══════════════════════════════════════════ */
+      {
+        phase: "research",
+        icon: "😰", title: { es:"El dolor real", en:"The real pain" },
+        content: { es:"El equipo de finanzas (2-4 personas) lo resumía así:", en:"The finance team (2-4 people) put it this way:" },
+        bullets: {
+          es: [
+            "💬 *\"Cada mes es empezar de cero con el Excel\"*",
+            "💬 *\"Si un precio cambia, hay que actualizarlo en 5 lugares distintos\"*",
+            "💬 *\"No sé si el saldo de la bolsa Meta está bien calculado hasta que alguien se queja\"*",
+            "📊 Datos repartidos entre **4 sistemas**: base de datos interna, dos datasets de BigQuery, y Odoo (ERP contable)",
+            "⏱️ El cierre mensual tomaba **DÍAS** de trabajo manual",
+            "🐛 Fórmulas rotas, filas olvidadas, precios desactualizados",
+            "📈 Cada nuevo cliente **multiplicaba la complejidad**",
+            "🏢 Los clientes grandes exigían **agrupaciones de facturación personalizadas** — ciertos consumos facturados por separado, a direcciones o entidades distintas — algo que *ni el ERP ni los Sheets podían resolver*",
+            "💡 Todo apuntaba a una misma conclusión: se necesitaba **un sistema a medida** que mapeara los consumos y permitiera organizarlos según las reglas de cada cliente"
+          ],
+          en: [
+            "💬 *\"Every month we start from scratch with the Excel\"*",
+            "💬 *\"If a price changes, you have to update it in 5 different places\"*",
+            "💬 *\"I don't know if the Meta bag balance is correct until someone complains\"*",
+            "📊 Data spread across **4 systems**: internal DB, two BigQuery datasets, and Odoo (accounting ERP)",
+            "⏱️ Monthly closing took **DAYS** of manual work",
+            "🐛 Broken formulas, forgotten rows, outdated prices",
+            "📈 Every new client **multiplied the complexity**",
+            "🏢 Large clients demanded **custom billing groupings** — certain consumption billed separately, to different addresses or entities — *something neither the ERP nor Sheets could handle*",
+            "💡 Everything pointed to the same conclusion: **a custom system was needed** to map consumption and organize it according to each client's rules"
+          ],
+        },
+        image: "/images/billing_pain_simple.svg",
+      },
+
+      /* ══════════════════════════════════════════
+         3. MI ROL
+         ══════════════════════════════════════════ */
+      {
+        phase: "research",
+        icon: "🧑‍💻", title: { es:"Mi rol: de designer a builder", en:"My role: from designer to builder" },
+        content: { es:"Este proyecto arrancó durante mi transición de **Product Designer a Product Owner**. El plan original era que yo entendiera el problema, lo tradujera en diseño y especificaciones, y un desarrollador dedicado lo construyera.\n\nPero la realidad fue otra: los desarrolladores estaban ocupados con el producto core, y este proyecto — al ser operacional e interno — no tenía la misma prioridad de negocio.\n\nEn vez de pausar el proyecto, pedí autorización para **construirlo yo mismo mediante vibe coding**. Ya tenía el contexto completo del problema y podía transmitirlo a una IA más rápido que cualquier otro dev que tuviera que empezar de cero. Los datos ya estaban siendo mapeados, así que había terreno ganado.\n\nEl resultado: fui **Product Designer y vibe coder** de todo el sistema — desde la arquitectura de información hasta el frontend y la lógica de negocio.", en:"This project started during my transition from **Product Designer to Product Owner**. The original plan was for me to understand the problem, translate it into design and specs, and have a dedicated developer build it.\n\nBut reality was different: developers were busy with the core product, and this project — being operational and internal — didn't have the same business priority.\n\nInstead of pausing the project, I asked for authorization to **build it myself through vibe coding**. I already had full context of the problem and could communicate it to an AI faster than any other dev who'd have to start from scratch. The data was already being mapped, so there was ground gained.\n\nThe result: I was **Product Designer and vibe coder** for the entire system — from information architecture to frontend and business logic." },
+        image: "/images/billing_role_evolution_v2.svg",
+      },
+
+      /* ══════════════════════════════════════════
+         4. DISEÑAR PARA EL DOMINIO
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "🏗️", title: { es:"Arquitectura de información: diseñar para el dominio", en:"Information architecture: design for the domain" },
+        content: { es:"Junto al equipo de finanzas definimos una estructura que pudiera cubrir la **mayoría de los casos de forma cómoda**, pero con la flexibilidad necesaria para adaptarse a escenarios más específicos sin fricciones.\n\nLlegamos a los siguientes conceptos clave:", en:"Together with the finance team we defined a structure that could cover **most cases comfortably**, while remaining flexible enough to adapt to more specific scenarios without friction.\n\nWe arrived at the following key concepts:" },
+        bullets: {
+          es: [
+            "🏢 **Holding** — Agrupa uno o más *establishments* y una o más *unidades de negocio* bajo un solo identificador de cliente. Antes, los clientes con múltiples instancias se facturaban por separado; ahora el holding permite consolidarlos.",
+            "🏪 **Establishment** — Cada acceso creado para un cliente en la aplicación. Dentro de cada establishment viven los **activos** que reflejan el consumo real.",
+            "📊 **Activos** — Todos los ítems que generan consumo facturable: *usuarios activos, mensajes recibidos, cuentas conectadas*, etc. Se agrupan libremente en unidades de negocio.",
+            "📋 **Unidad de Negocio** — Agrupación flexible de activos con datos de facturación y planes personalizados. El usuario crea tantas como necesite según la realidad del cliente.",
+            "🧾 **Nota de Venta** — Prefactura generada para cada unidad de negocio con al menos un activo asignado."
+          ],
+          en: [
+            "🏢 **Holding** — Groups one or more *establishments* and one or more *business units* under a single client identifier. Previously, clients with multiple instances were billed separately; the holding now allows consolidating them.",
+            "🏪 **Establishment** — Each access point created for a client in the application. Each establishment contains the **assets** that reflect actual consumption.",
+            "📊 **Assets** — All items that generate billable consumption: *active users, received messages, connected accounts*, etc. They can be freely grouped into business units.",
+            "📋 **Business Unit** — Flexible grouping of assets with billing data and custom plans. Users create as many as needed based on the client's reality.",
+            "🧾 **Sales Note** — Pre-invoice generated for each business unit with at least one assigned asset."
+          ],
+        },
+        image: "/images/billing_architecture_v2.svg",
+      },
+
+      /* ══════════════════════════════════════════
+         4. 8 TABS, UN CICLO COMPLETO
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "🗂️", title: { es:"8 tabs, un ciclo completo", en:"8 tabs, one complete cycle" },
+        content: { es:"Al entrar a la plataforma, el usuario ve el **listado de holdings** junto con alertas de holdings sin establishments asociados o establishments huérfanos.\n\nYa dentro de un holding, el equipo accede a **8 pestañas** que cubren todo el ciclo de facturación *sin salir de la pantalla del cliente*.\n\nAdemás, un **selector de mes** en la parte superior permite navegar entre períodos, y un registro del valor del **dólar y la UF** versus el peso chileno da contexto financiero inmediato.", en:"Upon entering the platform, the user sees the **holdings list** along with alerts for holdings missing establishments or orphaned establishments.\n\nOnce inside a holding, the team accesses **8 tabs** covering the entire billing cycle *without leaving the client screen*.\n\nAdditionally, a **month selector** at the top allows navigating between periods, and a record of the **USD and UF** exchange rates versus the Chilean peso provides immediate financial context." },
+        bullets: {
+          es: [
+            "1️⃣ **Consumo Global** — Consumo de cada activo sin separar por establishment, con *comparativa versus el mes anterior*.",
+            "2️⃣ **Unidades de Negocio** — Unidad por defecto con activos no asignados. Crear nuevas unidades, ver tabla de activos con propiedades, filtrar por categoría, ocultar no facturables, cambiar moneda, asignar datos de facturación, *generar notas de venta y enviar al ERP*.",
+            "3️⃣ **Plantillas** — Configuraciones predeterminadas por tipo de activo para no repetir el setup cada mes.",
+            "4️⃣ **Configuración** — Datos del cliente: nombre, contacto, dirección, datos de facturación.",
+            "5️⃣ **Establishments y Activos** — Asociar o desvincular establishments al holding.",
+            "6️⃣ **Bolsas Meta** — Control prepago WhatsApp con períodos y saldo.",
+            "7️⃣ **Notas de Venta** — Almacén de las notas generadas desde unidades de negocio.",
+            "8️⃣ **Historial** — Registro de todos los cambios realizados por usuarios para *auditorías y control de cambios*."
+          ],
+          en: [
+            "1️⃣ **Global Consumption** — Each asset's consumption without splitting by establishment, with *month-over-month comparison*.",
+            "2️⃣ **Business Units** — Default unit with unassigned assets. Create new units, view asset table with properties, filter by category, hide non-billable items, change currency, assign billing data, *generate sales notes and send to ERP*.",
+            "3️⃣ **Templates** — Preset configurations per asset type so setup doesn't repeat every month.",
+            "4️⃣ **Configuration** — Client data: name, contact, address, billing information.",
+            "5️⃣ **Establishments & Assets** — Associate or unlink establishments to the holding.",
+            "6️⃣ **Meta Bags** — WhatsApp prepaid control with periods and balance.",
+            "7️⃣ **Sales Notes** — Storage for notes generated from business units.",
+            "8️⃣ **History** — Record of all changes made by users for *audits and change control*."
+          ],
+        },
+        image: "/images/Holding interno pestanas.gif",
+      },
+
+      /* ══════════════════════════════════════════
+         5. TABLAS CON EDICIÓN INLINE
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "📝", title: { es:"Configuración de activos y plantillas", en:"Asset configuration and templates" },
+        content: { es:"El equipo configura una **unidad de negocio completa** y todos sus activos sin salir de la pantalla. La tabla permite asociar *SKUs*, definir precios totales o unitarios, descuentos e IVA, agregar descripciones personalizadas por ítem, y seleccionar activos para **generar notas de venta**.\n\nPero surgió una primera iteración clave: *¿tendría el usuario que definir estos datos cada vez que quisiera facturar?* Mantener el control así era complejo. Además apareció otro problema: **¿qué pasa con los activos que no vienen del consumo?** Servicios extra como horas de soporte especializado o tiempo de desarrollo no provenían de la plataforma, sino de la gestión humana.\n\nAsí nació la sección de **Plantillas**. El usuario puede elegir cualquier tipo de activo —ya mapeado en el sistema— y predefinir toda su configuración: *SKU, descripción, precio unitario o total, IVA, descuento, tope y precio del excedente*. Cuando llega el consumo, los activos ya traen sus variables configuradas.\n\nAdemás, las plantillas permiten crear **ítems personalizados** para cubrir lo que no viene por consumo: horas de soporte, activaciones, servicios extra. Se les puede asignar un consumo y aplicar las mismas variables que a un activo común.", en:"The team configures a complete **business unit** and all its assets without leaving the screen. The table allows associating *SKUs*, defining total or unit prices, discounts and tax, adding custom descriptions per item, and selecting assets to **generate sales notes**.\n\nBut a key first iteration emerged: *would the user have to define this data every time they wanted to bill?* Maintaining control that way was complex. Another problem appeared too: **what about assets that don't come from consumption?** Extra services like specialized support hours or development time didn't come from the platform, but from human management.\n\nThis gave birth to the **Templates** section. The user can pick any asset type —already mapped in the system— and predefine its entire configuration: *SKU, description, unit or total price, tax, discount, cap and excess pricing*. When consumption data arrives, assets already carry their configured variables.\n\nAdditionally, templates allow creating **custom items** to cover what doesn't come from consumption: support hours, activations, extra services. They can be assigned a consumption value and the same variables as a regular asset." },
+        image: "/images/BU_plantillas.gif",
+      },
+
+      /* ══════════════════════════════════════════
+         6. MANTENEDORES: SKU Y TIPOS DE ACTIVO
+         ══════════════════════════════════════════ */
+      {
+        phase: "iteration",
+        icon: "⚙️", title: { es:"Mantenedores: SKU y tipos de activo", en:"Maintainers: SKU and asset types" },
+        content: { es:"Para que el sistema de plantillas y facturación funcionara de forma escalable, necesitábamos una **fuente de verdad centralizada** para los tipos de activo y sus SKUs.\n\nDiseñamos mantenedores que permiten al equipo de finanzas gestionar el catálogo de activos de forma autónoma, *sin depender de desarrollo*:", en:"For the template and billing system to work at scale, we needed a **centralized source of truth** for asset types and their SKUs.\n\nWe designed maintainers that allow the finance team to manage the asset catalog autonomously, *without depending on development*:" },
+        bullets: {
+          es: [
+            "📋 **Mantenedor de SKUs** — Catálogo centralizado de códigos de producto. Cada SKU se asocia a un tipo de activo y define cómo aparece en las notas de venta y en el ERP.",
+            "📊 **Mantenedor de tipos de activo** — Define qué ítems del sistema generan consumo facturable. Permite agregar nuevos tipos cuando la plataforma incorpora funcionalidades, sin tocar código.",
+            "🔗 **Relación SKU ↔ Activo** — Cada tipo de activo puede tener uno o más SKUs asociados, permitiendo diferenciar precios o condiciones según el plan del cliente.",
+            "🛡️ **Autonomía del equipo** — Finanzas puede crear, editar y desactivar SKUs y tipos de activo sin intervención técnica. El sistema valida consistencia automáticamente."
+          ],
+          en: [
+            "📋 **SKU Maintainer** — Centralized product code catalog. Each SKU is associated with an asset type and defines how it appears in sales notes and the ERP.",
+            "📊 **Asset type maintainer** — Defines which system items generate billable consumption. Allows adding new types when the platform incorporates features, without touching code.",
+            "🔗 **SKU ↔ Asset relationship** — Each asset type can have one or more associated SKUs, allowing price or condition differentiation based on the client's plan.",
+            "🛡️ **Team autonomy** — Finance can create, edit and deactivate SKUs and asset types without technical intervention. The system validates consistency automatically."
+          ],
+        },
+        image: "/images/mantenedores.gif",
+      },
+
+      /* ══════════════════════════════════════════
+         8. 4 SISTEMAS, 1 INTERFAZ
+         ══════════════════════════════════════════ */
+      {
+        phase: "iteration",
+        icon: "🔗", title: { es:"4 sistemas, 1 interfaz", en:"4 systems, 1 interface" },
+        content: { es:"El desafío de diseño más invisible fue el más importante: el equipo de finanzas necesitaba información de **4 fuentes distintas** para facturar UN solo cliente. Antes, esto significaba saltar entre pestañas, copiar datos y cruzar información manualmente.\n\nMi decisión: diseñar una *capa de abstracción* donde cada dato aparece en contexto, sin importar de dónde viene. La complejidad técnica es responsabilidad del sistema, **no del usuario**.", en:"The most invisible design challenge was the most important: the finance team needed information from **4 different sources** to bill a SINGLE client. Before, this meant jumping between tabs, copying data and cross-referencing manually.\n\nMy decision: design an *abstraction layer* where every data point appears in context, regardless of its source. Technical complexity is the system's responsibility, **not the user's**." },
+        bullets: {
+          es: [
+            "🗄️ Datos de clientes y configuración — el equipo edita directamente",
+            "📊 Consumo real de tickets, usuarios y cuentas — llega automáticamente desde la plataforma",
+            "💬 Consumo de WhatsApp y bots — se integra sin intervención manual",
+            "🏦 Facturación contable — se sincroniza con el ERP sin copiar datos",
+            "──────",
+            "👤 El usuario ve **UNA tabla de activos** por cliente. Cada fila combina datos de hasta 3 fuentes, pero solo ve: *activo, consumo, precio, total*",
+            "🚫 Cero pestañas extra. Cero copiar y pegar. Cero *'de dónde saco este dato'*"
+          ],
+          en: [
+            "🗄️ Client data and configuration — the team edits directly",
+            "📊 Real ticket, user and account consumption — arrives automatically from the platform",
+            "💬 WhatsApp and bot consumption — integrates without manual intervention",
+            "🏦 Accounting billing — syncs with the ERP without copying data",
+            "──────",
+            "👤 The user sees **ONE asset table** per client. Each row combines data from up to 3 sources, but they only see: *asset, consumption, price, total*",
+            "🚫 Zero extra tabs. Zero copy-paste. Zero *'where do I get this data'*"
+          ],
+        },
+        image: "/images/billing_4_systems_1_interface.svg",
+      },
+
+      /* ══════════════════════════════════════════
+         9. EL IMPACTO
+         ══════════════════════════════════════════ */
+      {
+        phase: "results",
+        icon: "🏆", title: { es:"El impacto", en:"The impact" },
+        content: { es:"Cada decisión de diseño se tradujo en un **impacto medible** para el equipo de finanzas:", en:"Every design decision translated into **measurable impact** for the finance team:" },
+        bullets: {
+          es: [
+            "⏱️ **Cierre mensual** — DÍAS → HORAS. El *carry-forward* automático eliminó la necesidad de empezar de cero cada mes",
+            "🐛 **Errores de facturación** — Frecuentes → Prácticamente cero. Cálculos automatizados reemplazaron fórmulas manuales",
+            "🚀 **Onboarding de clientes** — Horas → Minutos. El sistema de plantillas permite configurar un cliente nuevo aplicando un template",
+            "🔍 **Trazabilidad** — Inexistente → Log completo. El equipo dejó de tener miedo a configurar porque cada cambio queda registrado",
+            "💬 **Bolsas prepago** — Excel frágil → Motor de cálculo validado. 30 combinaciones posibles controladas por UX (*permitir / advertir / bloquear*)",
+            "💱 **Multi-moneda** — Conversiones manuales → Tipo de cambio automático con override",
+            "📈 **Escalabilidad** — Cada nuevo cliente ya no multiplica la complejidad. La estructura jerárquica escala naturalmente"
+          ],
+          en: [
+            "⏱️ **Monthly closing** — DAYS → HOURS. Automatic *carry-forward* eliminated the need to start from scratch each month",
+            "🐛 **Billing errors** — Frequent → Practically zero. Automated calculations replaced manual formulas",
+            "🚀 **Client onboarding** — Hours → Minutes. The template system allows configuring a new client by applying a template",
+            "🔍 **Traceability** — Nonexistent → Complete log. The team stopped being afraid to configure because every change is recorded",
+            "💬 **Prepaid bags** — Fragile Excel → Validated calculation engine. 30 possible combinations controlled by UX (*allow / warn / block*)",
+            "💱 **Multi-currency** — Manual conversions → Automatic exchange rates with override",
+            "📈 **Scalability** — New clients no longer multiply complexity. Hierarchical structure scales naturally"
+          ],
+        },
+        highlight: true,
+        bottomImage: "/images/billing_impact_v2_aligned.svg",
+      },
+
+      /* ══════════════════════════════════════════
+         10. LECCIONES
+         ══════════════════════════════════════════ */
+      {
+        phase: "results",
+        icon: "🧠", title: { es:"Lo que me enseñó diseñar para dominios complejos", en:"What designing for complex domains taught me" },
+        bullets: {
+          es: [
+            "🏗️ **Diseña para el dominio, no para la base de datos** — La estructura del sistema debe reflejar cómo el equipo piensa el negocio. Si el usuario dice *'holding'*, la interfaz dice *'holding'*. Nunca le pidas al usuario que traduzca su lenguaje al tuyo.",
+            "🧩 **Si tiene 30 combinaciones, no le pongas 'un formulario'** — Categoricé cada combinación en 4 niveles de UX: permitir sin fricción, mostrar advertencia, exigir doble confirmación, o bloquear completamente. El diseño de la restricción ES el diseño del producto.",
+            "🔄 **El mejor feature es el que no necesita al usuario** — Carry-forward automático: la configuración se arrastra de mes a mes. El equipo solo toca lo que cambia. El cierre mensual dejó de ser *'empezar de cero'*.",
+            "📋 **La confianza se diseña** — El historial de cambios no era un *'nice to have'*. Era lo que le daba al equipo la seguridad de configurar sin miedo. Saber que cada cambio queda registrado cambia el comportamiento del usuario.",
+            "🎨 **A veces el diseñador tiene que construir** — Cuando no había devs disponibles, no pausé el proyecto: pedí autorización para construirlo yo mismo con vibe coding. Tener el contexto completo del problema me permitió transmitirlo a la IA más rápido que cualquier dev nuevo."
+          ],
+          en: [
+            "🏗️ **Design for the domain, not the database** — The system structure must reflect how the team thinks about the business. If the user says *'holding'*, the interface says *'holding'*. Never ask the user to translate their language into yours.",
+            "🧩 **If it has 30 combinations, don't give it 'a form'** — I categorized each combination into 4 UX levels: allow without friction, show warning, require double confirmation, or block completely. Constraint design IS product design.",
+            "🔄 **The best feature needs no user** — Automatic carry-forward: configuration carries over month to month. The team only touches what changes. Monthly closing stopped being *'starting from scratch'*.",
+            "📋 **Trust is designed** — The change history wasn't a *'nice to have'*. It's what gave the team the confidence to configure without fear. Knowing every change is recorded changes user behavior.",
+            "🎨 **Sometimes the designer has to build** — When no devs were available, I didn't pause the project: I asked permission to build it myself with vibe coding. Having the complete problem context let me transfer it to AI faster than any new dev."
+          ],
+        },
+        highlight: true,
+        bottomImage: "/images/billing_lessons_w98_metaphor.svg",
       },
     ],
   },
