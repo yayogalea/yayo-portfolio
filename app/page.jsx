@@ -118,7 +118,6 @@ const QUERIES = {
     { icon:"👋", text:"¿Quién es Yayo?" },
     { icon:"🗺️", text:"¿Cuál ha sido tu trayectoria profesional?" },
     { icon:"📊", text:"Cuéntame sobre Monitoreo 2.0" },
-    { icon:"🤖", text:"¿Qué hiciste en el AI Flow Builder?" },
     { icon:"💎", text:"¿Qué es el Diamond Design System?" },
     { icon:"🛠️", text:"¿Qué herramientas manejas?" },
     { icon:"🏢", text:"¿Qué haces actualmente?" },
@@ -128,7 +127,6 @@ const QUERIES = {
     { icon:"👋", text:"Who is Yayo?" },
     { icon:"🗺️", text:"What's your career path?" },
     { icon:"📊", text:"Tell me about Monitoring 2.0" },
-    { icon:"🤖", text:"What did you do on the AI Flow Builder?" },
     { icon:"💎", text:"What is the Diamond Design System?" },
     { icon:"🛠️", text:"What tools do you use?" },
     { icon:"🏢", text:"What do you do currently?" },
@@ -769,7 +767,7 @@ export default function YayoPortfolio() {
       if (!hintKey) {
         const lower = text.toLowerCase();
         if (lower.includes("monitoreo")||lower.includes("monitoring")) hintKey = "monitoreo";
-        else if (lower.includes("bot")||lower.includes("flow builder")) hintKey = "flowbuilder";
+        else if (!PROJECTS.flowbuilder?.hidden && (lower.includes("bot")||lower.includes("flow builder"))) hintKey = "flowbuilder";
         else if (lower.includes("diamond")||lower.includes("design system")) hintKey = "dds";
       }
       if (hintKey) {
@@ -837,7 +835,7 @@ export default function YayoPortfolio() {
         const lower=text.toLowerCase();
         let apiHintKey = null;
         if(lower.includes("monitoreo")||lower.includes("monitoring")||lower.includes("analytics")||lower.includes("dashboard")||lower.includes("productiv")) apiHintKey="monitoreo";
-        else if(lower.includes("bot")||lower.includes("flow builder")||lower.includes("chatbot")||lower.includes("automation")||lower.includes("flujo")) apiHintKey="flowbuilder";
+        else if(!PROJECTS.flowbuilder?.hidden && (lower.includes("bot")||lower.includes("flow builder")||lower.includes("chatbot")||lower.includes("automation")||lower.includes("flujo"))) apiHintKey="flowbuilder";
         else if(lower.includes("diamond")||lower.includes("design system")||lower.includes("dds")) apiHintKey="dds";
         if (apiHintKey) setMsgsSync(prev => [...prev, { role:"gallery-hint", galleryKey: apiHintKey }]);
       }catch{
@@ -874,9 +872,11 @@ export default function YayoPortfolio() {
   ];
 
   const projectMenuItems = [
-    {icon:"📊",label:lang==="es"?"Monitoreo 2.0":"Monitoring 2.0",action:()=>{setGallery("monitoreo");setFresh(false);}},
-    {icon:"🤖",label:"AI Bot Flow Builder",action:()=>{setGallery("flowbuilder");setFresh(false);}},
-    {icon:"💎",label:"Diamond Design System",action:()=>{setGallery("dds");setFresh(false);}},
+    ...Object.entries(PROJECTS).filter(([,p]) => !p.hidden).map(([key, p]) => ({
+      icon: {monitoreo:"📊",flowbuilder:"🤖",dds:"💎"}[key] || "📁",
+      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : p.title[lang],
+      action: () => { setGallery(key); setFresh(false); },
+    })),
   ];
   const contactMenuItems = [
     {icon:"📧",label:"dotyayodot@gmail.com",href:"mailto:dotyayodot@gmail.com"},

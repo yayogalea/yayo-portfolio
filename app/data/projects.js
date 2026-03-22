@@ -145,6 +145,7 @@ export const PROJECTS = {
     ],
   },
   flowbuilder: {
+    hidden: true,
     title: { es: "De listas confusas a un canvas visual", en: "From confusing lists to a visual canvas" },
     company: "Helpdesk SaaS",
     role: "Product Designer",
@@ -272,78 +273,232 @@ export const PROJECTS = {
     competency: { es: "Pensamiento sistémico · Colaboración con desarrollo", en: "Systems thinking · Dev collaboration" },
     figma: "https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo?node-id=0-501",
     slides: [
-      /* ── CONTEXT ── */
+      /* ══════════════════════════════════════════
+         1. RESUMEN Y CONTEXTO
+         ══════════════════════════════════════════ */
       {
         phase: "context",
-        icon: "💎", title: { es:"El Desafío", en:"The Challenge" },
-        content: { es:"Una plataforma de Customer Experience con múltiples productos que se sentían como apps distintas. Cada sección tenía su propio estilo visual, sus propios componentes, y cada desarrollador abordaba el frontend a su manera. El usuario no podía confiar en que un botón se comportara igual en todas partes.", en:"A Customer Experience platform with multiple products that felt like different apps. Each section had its own visual style, its own components, and each developer approached the frontend their own way. Users couldn't trust that a button would behave the same everywhere." },
+        icon: "💎", title: { es:"Resumen", en:"Overview" },
+        content: { es:"Mi primer proyecto como Product Designer en la empresa, tomado proactivamente. Al hacer un barrido de la aplicación encontré hasta 5 estilos distintos de un mismo componente — botones, selectores, filtros — todos diferentes entre sí. La plataforma estaba construida en 3 lenguajes de programación distintos, con secciones que llevaban años sin actualizarse y sin ningún sistema de diseño.\n\nEsto significaba que cada desarrollador creaba componentes y decidía estilos al momento de construir, lo que aumentaba el tiempo de desarrollo y generaba una experiencia visual incoherente que impactaba la percepción de los usuarios sobre la plataforma. Creé el Diamond Design System en aproximadamente 3 semanas: un sistema basado en Atomic Design con Rubik y Karla como tipografías, retícula de 8pts, y documentación pensada para desarrolladores. Tres años después, sigue siendo el sistema activo del producto.", en:"My first project as Product Designer at the company, taken on proactively. When auditing the application I found up to 5 different styles for the same component — buttons, selectors, filters — all different from each other. The platform was built in 3 different programming languages, with sections that hadn't been updated in years and no design system whatsoever.\n\nThis meant each developer created components and decided styles on the fly, increasing development time and generating an incoherent visual experience that impacted users' perception of the platform. I created the Diamond Design System in approximately 3 weeks: a system based on Atomic Design with Rubik and Karla as typefaces, 8pt grid, and documentation designed for developers. Three years later, it's still the product's active system." },
         tags: ["Design System","Atomic Design","Systems Thinking","Figma","Dev Handoff"],
       },
       {
         phase: "context",
-        icon: "📍", title: { es:"El diagnóstico", en:"The diagnosis" },
-        content: { es:"Al unirme al equipo, lo primero que hice fue investigar el estado actual del UI. Lo que encontré era un problema sistémico:", en:"When joining the team, the first thing I did was research the current UI state. What I found was a systemic problem:" },
+        icon: "🔥", title: { es:"El Problema", en:"The Problem" },
+        content: { es:"La plataforma había crecido orgánicamente durante años. Tres lenguajes de programación distintos, secciones construidas en diferentes épocas, y cero gobernanza visual. El resultado era una aplicación que se sentía como varias apps distintas pegadas:", en:"The platform had grown organically over the years. Three different programming languages, sections built in different eras, and zero visual governance. The result was an application that felt like several different apps glued together:" },
         bullets: {
-          es: ["🪹 Base muy pequeña — pocos componentes reutilizables, cada dev construía desde cero","🌈 Frameworks variados — distintas secciones usaban distintos frameworks, imposible compartir","🤯 UI incoherente — los mismos componentes se veían y comportaban distinto, confundiendo usuarios"],
-          en: ["🪹 Tiny foundation — few reusable components, each dev built from scratch","🌈 Mixed frameworks — different sections used different frameworks, impossible to share","🤯 Incoherent UI — same components looked and behaved differently, confusing users"],
+          es: ["🎨 Hasta 5 estilos distintos de botones, selectores y filtros en la misma aplicación","💻 3 lenguajes de programación distintos — imposible compartir componentes entre secciones","⏳ Secciones construidas hace años sin actualizar — deuda técnica visual acumulada","🔨 Cada desarrollador creaba componentes y decidía estilos al momento → tiempo de desarrollo alto","😤 Los usuarios no se quejaban del estilo, pero sí de la usabilidad de filtros y selectores antiguos que tenían una UX pobre","👁️ La inconsistencia visual afectaba la percepción profesional de la plataforma"],
+          en: ["🎨 Up to 5 different styles for buttons, selectors and filters in the same application","💻 3 different programming languages — impossible to share components between sections","⏳ Sections built years ago without updates — accumulated visual tech debt","🔨 Each developer created components and decided styles on the fly → high development time","😤 Users didn't complain about style, but about the usability of old filters and selectors with poor UX","👁️ Visual inconsistency affected the platform's professional perception"],
         },
       },
-      /* ── GOALS ── */
       {
-        phase: "goals",
-        icon: "⛳", title: { es:"La visión", en:"The vision" },
-        content: { es:"Un Design System no es una librería de componentes — es un contrato entre diseño y desarrollo:", en:"A Design System isn't a component library — it's a contract between design and development:" },
+        phase: "context",
+        icon: "🖥️", title: { es:"Estado previo", en:"Previous state" },
+        content: { es:"Al recorrer la aplicación documenté las inconsistencias. Un mismo tipo de componente podía verse completamente diferente dependiendo de la sección y del desarrollador que lo había construido. No existía una fuente de verdad visual:", en:"When going through the application I documented the inconsistencies. The same type of component could look completely different depending on the section and the developer who built it. There was no visual source of truth:" },
         bullets: {
-          es: ["⏱️ Optimizar tiempo — no recrear un botón cada vez, usar uno probado","🫂 Experiencia cohesiva — que la plataforma hable un solo idioma visual","📈 Escalabilidad — cambiar un componente y que se actualice en todas partes"],
-          en: ["⏱️ Optimize time — don't recreate a button each time, use one that's tested","🫂 Cohesive experience — platform speaks one visual language","📈 Scalability — change a component and have it update everywhere"],
+          es: ["🔘 Botones: al menos 5 variaciones distintas de color, forma y tamaño sin ninguna lógica","📝 Inputs y selectores: cada sección tenía su propia versión, algunos con usabilidad muy pobre","🎨 Colores: sin paleta definida — cada dev elegía tonos arbitrariamente","📏 Espaciados: inconsistentes, sin retícula — cada layout era un mundo aparte","📋 Los filtros y selectores más antiguos generaban quejas de usabilidad por parte de los usuarios"],
+          en: ["🔘 Buttons: at least 5 distinct variations of color, shape and size with no logic","📝 Inputs and selectors: each section had its own version, some with very poor usability","🎨 Colors: no defined palette — each dev chose tones arbitrarily","📏 Spacing: inconsistent, no grid — each layout was its own world","📋 The oldest filters and selectors generated usability complaints from users"],
         },
       },
-      /* ── WIREFRAMES ── */
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Investigación
+         ══════════════════════════════════════════ */
       {
-        phase: "wireframes",
-        icon: "🧬", title: { es:"Atomic Design como estructura", en:"Atomic Design as structure" },
-        content: { es:"Organicé todo bajo Atomic Design con retícula de 8pts y tipografía Montserrat. Cada nivel construye sobre el anterior:", en:"I organized everything under Atomic Design with 8pt grid and Montserrat typography. Each level builds on the previous:" },
+        phase: "research",
+        icon: "🔍", title: { es:"Investigación", en:"Research" },
+        content: { es:"Mi primer paso fue un barrido general de toda la aplicación, capturando cada variación de componentes que encontraba. Luego entrevisté a los desarrolladores para entender las limitaciones y posibilidades de cada lenguaje, y así decidir en cuál construir el sistema. También trabajé con marketing y el CEO para definir el color principal alineado con la imagen de marca:", en:"My first step was a general sweep of the entire application, capturing every component variation I found. Then I interviewed developers to understand the limitations and possibilities of each language, and decide which one to build the system in. I also worked with marketing and the CEO to define the primary color aligned with the brand image:" },
+        bullets: {
+          es: ["🔎 Auditoría visual completa — recorrí cada sección documentando variaciones de componentes","👨‍💻 Entrevistas con desarrolladores — entender limitaciones y posibilidades de cada lenguaje de programación","🎯 Decisión de lenguaje — elegimos el más estable y actualizable para construir el DS","🎨 Color principal — definido junto con marketing y CEO para alinear con imagen de marca","👥 Sin quejas directas de estilo por parte de usuarios, pero sí sobre usabilidad de filtros y selectores antiguos"],
+          en: ["🔎 Complete visual audit — went through every section documenting component variations","👨‍💻 Developer interviews — understand limitations and possibilities of each programming language","🎯 Language decision — we chose the most stable and updatable to build the DS","🎨 Primary color — defined with marketing and CEO to align with brand image","👥 No direct style complaints from users, but usability complaints about old filters and selectors"],
+        },
+      },
+      {
+        phase: "research",
+        icon: "🎯", title: { es:"Decisiones clave", en:"Key decisions" },
+        content: { es:"Cada decisión del sistema respondió a una necesidad concreta del contexto. No elegí por moda — elegí por pragmatismo:", en:"Every system decision responded to a concrete contextual need. I didn't choose by trend — I chose by pragmatism:" },
+        bullets: {
+          es: ["🧬 Atomic Design — escalable y fácil de modificar. Una marca y sus estilos están en constante cambio: la idea era hacer un esfuerzo grande al inicio y luego solo mantención","✏️ Rubik — la tipografía oficial de la marca. No negociable","📝 Karla — necesitábamos una variación más sobria para el cuerpo del sistema, complementaria a Rubik","📐 Retícula de 8pts — estándar de la industria, facilita alineación y consistencia en todos los componentes","🔒 Restricción principal: el DS debía vivir dentro de un solo lenguaje de programación y convivir con sus limitaciones"],
+          en: ["🧬 Atomic Design — scalable and easy to modify. A brand and its styles are constantly changing: the idea was to make a big effort upfront and then just maintenance","✏️ Rubik — the brand's official typeface. Non-negotiable","📝 Karla — we needed a more sober variation for the system body, complementary to Rubik","📐 8pt grid — industry standard, facilitates alignment and consistency across all components","🔒 Main constraint: the DS had to live within a single programming language and coexist with its limitations"],
+        },
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Ideación
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "🧬", title: { es:"Estructura del sistema", en:"System structure" },
+        content: { es:"Organicé todo bajo Atomic Design con retícula de 8pts. Cada nivel construye sobre el anterior, desde los elementos más básicos hasta las composiciones completas:", en:"I organized everything under Atomic Design with an 8pt grid. Each level builds on the previous, from the most basic elements to complete compositions:" },
         atoms: {
-          es: ["⚛️ Átomos — Colores, tipografías, iconos por categoría, logos, espaciados","🧬 Moléculas — Botones (Default/Hover/Disabled), Inputs, Dropdowns, Tablas, Alertas, Tooltips","🦠 Organismos — Módulo de Creación, Toolbar, Tarjetas de Resumen, Modales, Formularios"],
-          en: ["⚛️ Atoms — Colors, typography, icons by category, logos, spacing","🧬 Molecules — Buttons (Default/Hover/Disabled), Inputs, Dropdowns, Tables, Alerts, Tooltips","🦠 Organisms — Creation Module, Toolbar, Summary Cards, Modals, Forms"],
+          es: ["⚛️ Átomos — Colores (paleta primaria, secundaria, estados, neutros), tipografías (Rubik + Karla), iconos por categoría, logos, espaciados en base 8","🧬 Moléculas — Botones (Default/Hover/Active/Disabled, tamaños S/M/L), Inputs (con label, helper text, estados), Dropdowns (búsqueda, multi-select), Tablas, Alertas, Tooltips","🦠 Organismos — Módulo de Creación, Toolbar, Tarjetas de Resumen, Modales, Formularios completos, Headers"],
+          en: ["⚛️ Atoms — Colors (primary, secondary, states, neutrals palette), typography (Rubik + Karla), icons by category, logos, 8-based spacing","🧬 Molecules — Buttons (Default/Hover/Active/Disabled, sizes S/M/L), Inputs (with label, helper text, states), Dropdowns (search, multi-select), Tables, Alerts, Tooltips","🦠 Organisms — Creation Module, Toolbar, Summary Cards, Modals, Complete Forms, Headers"],
         },
-      },
-      /* ── PROTOTYPE ── */
-      {
-        phase: "prototype",
-        icon: "🎨", title: { es:"Sistema de color y tipografía", en:"Color and typography system" },
-        content: { es:"Definí una paleta completa y un sistema tipográfico consistente como base de todo:", en:"I defined a complete palette and consistent typographic system as the foundation:" },
-        bullets: {
-          es: ["🎨 Paleta: Primarios (azul corporativo), Secundarios, Estados (éxito, error, warning, info), Neutros","📝 Tipografía: Montserrat en todas sus variaciones de peso","📐 Retícula de 8pts para todos los espaciados y dimensiones","📏 Escala tipográfica definida: desde H1-H6 hasta body y captions"],
-          en: ["🎨 Palette: Primary (corporate blue), Secondary, States (success, error, warning, info), Neutrals","📝 Typography: Montserrat in all weight variations","📐 8pt grid for all spacing and dimensions","📏 Defined typographic scale: from H1-H6 to body and captions"],
-        },
+        images: [
+          { src: "/images/dds_palette.png", caption: { es:"Paleta principal: Azul Diamante + Morado Luna", en:"Main palette: Diamond Blue + Moon Purple" } },
+          { src: "/images/dds_theme.png", caption: { es:"Tema de marca: aplicación Light/Dark", en:"Brand theme: Light/Dark application" } },
+        ],
       },
       {
-        phase: "prototype",
-        icon: "🧩", title: { es:"Componentes", en:"Components" },
-        content: { es:"Cada componente fue diseñado con todas sus variaciones, documentado y conectado:", en:"Each component was designed with all its variations, documented and connected:" },
+        phase: "ideation",
+        icon: "📘", title: { es:"Componentes y handoff", en:"Components and handoff" },
+        content: { es:"Un diseño increíble que el dev no puede traducir a código no sirve de nada. Mi enfoque fue documentar cada componente pensando en el desarrollador como un traductor, no un intérprete. Cada variación documentada, cada estado especificado, cada medida explícita:", en:"An incredible design the dev can't translate to code is worthless. My approach was to document every component thinking of the developer as a translator, not an interpreter. Every variation documented, every state specified, every measurement explicit:" },
         bullets: {
-          es: ["🔘 Botones — Default, Hover, Active, Disabled, variaciones por icono y tamaño S/M/L","📝 Inputs — Default, Focus, Filled, Error, Disabled, con label y helper text","📋 Dropdowns — Con búsqueda, multi-select, grupos","📊 Tablas — Con ordenamiento, paginación, selección","💬 Alertas y Tooltips — Informativos, warning, error, success"],
-          en: ["🔘 Buttons — Default, Hover, Active, Disabled, icon and size S/M/L variations","📝 Inputs — Default, Focus, Filled, Error, Disabled, with label and helper text","📋 Dropdowns — With search, multi-select, groups","📊 Tables — With sorting, pagination, selection","💬 Alerts and Tooltips — Informational, warning, error, success"],
+          es: ["📄 Cada componente con todas sus variaciones y estados documentados","🔗 Documentado en términos de código, no solo de diseño — ej: AButton con props, no solo un rectángulo azul","📐 Figma con specs exactas — el dev es traductor, no intérprete","💬 Sesiones de explicación presenciales — documentar no reemplaza la conversación","🎨 Sistema de color completo: primarios, secundarios, estados (éxito, error, warning, info), neutros"],
+          en: ["📄 Every component with all variations and states documented","🔗 Documented in code terms, not just design — e.g., AButton with props, not just a blue rectangle","📐 Figma with exact specs — dev is translator, not interpreter","💬 In-person explanation sessions — documentation doesn't replace conversation","🎨 Complete color system: primary, secondary, states (success, error, warning, info), neutrals"],
         },
+        images: [
+          { src: "/images/dds_buttons_blue.png", caption: { es:"Botones: Principal, Secundario, Delineado con todos sus estados", en:"Buttons: Primary, Secondary, Outlined with all states" } },
+          { src: "/images/dds_calendar.png", caption: { es:"Calendario: 7 variaciones documentadas con casos de uso", en:"Calendar: 7 documented variations with use cases" } },
+        ],
+        figmaLink: "https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo?node-id=0-501",
       },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Iteración
+         ══════════════════════════════════════════ */
       {
-        phase: "prototype",
-        icon: "📘", title: { es:"El handoff como filosofía", en:"Handoff as philosophy" },
-        content: { es:"Un diseño increíble que el dev no puede traducir a código no sirve de nada. Mi enfoque: documentar y explicar. El desarrollador debe ser un traductor, no un intérprete.", en:"An incredible design the dev can't translate to code is worthless. My approach: document and explain. The developer should be a translator, not an interpreter." },
+        phase: "iteration",
+        icon: "🔧", title: { es:"Iteración: el caso del header", en:"Iteration: the header case" },
+        content: { es:"Ni siquiera los componentes 'resueltos' están exentos de iteración. El header que diseñé inicialmente cumplía su función, pero estaba ocupando demasiado espacio vertical en las pantallas de los usuarios, quitándole espacio a lo realmente importante — el contenido:", en:"Not even 'solved' components are exempt from iteration. The header I initially designed fulfilled its function, but was taking up too much vertical space on users' screens, stealing space from what really matters — the content:" },
+        beforeAfter: {
+          before: {
+            image: "/images/dds_header_before.png",
+            bullets: { es:["Header con título y botón 'Volver atrás' — ocupaba demasiado espacio vertical"], en:["Header with title and 'Go back' button — took up too much vertical space"] },
+          },
+          after: {
+            image: "/images/dds_header_after.png",
+            bullets: { es:["Breadcrumbs con navegación contextual — ganancia significativa de espacio"], en:["Breadcrumbs with contextual navigation — significant space gain"] },
+          },
+        },
         bullets: {
-          es: ["📄 Cada componente con todas sus variaciones documentadas","🔗 Ejemplo: AButton — documentado en términos de código, no solo de diseño","📐 Figma con specs exactas — el dev es traductor, no intérprete","💬 Sesiones de explicación — documentar no reemplaza la conversación"],
-          en: ["📄 Every component with all variations documented","🔗 Example: AButton — documented in code terms, not just design","📐 Figma with exact specs — dev is translator, not interpreter","💬 Explanation sessions — documentation doesn't replace conversation"],
+          es: ["💡 Aprendizaje: hasta los componentes que parecen resueltos necesitan validación en el contexto real de uso","📐 Esto reforzó la filosofía del sistema: está vivo, siempre se puede mejorar"],
+          en: ["💡 Learning: even components that seem solved need validation in real usage context","📐 This reinforced the system's philosophy: it's alive, it can always be improved"],
         },
       },
-      /* ── RESULTS ── */
+
+      /* ══════════════════════════════════════════
+         3. LA SOLUCIÓN Y RESULTADOS
+         ══════════════════════════════════════════ */
       {
         phase: "results",
-        icon: "🔄", title: { es:"Un sistema vivo", en:"A living system" },
-        content: { es:"El Diamond Design System no tiene 'fin'. Surgen nuevas problemáticas, el producto evoluciona, componentes necesitan ajustes. Eso es signo de buena salud. No es el fin, es solo el comienzo.", en:"The Diamond Design System has no 'end'. New challenges arise, the product evolves, components need adjustments. That's a sign of good health. It's not the end, it's just the beginning." },
+        icon: "📈", title: { es:"Adopción y resultados", en:"Adoption and results" },
+        content: { es:"La adopción del Diamond Design System fue total. Un desarrollador dedicó entre 1 y 2 meses a implementar la base del sistema en código, y luego todo el equipo se sumó a utilizarlo, actualizarlo y mantenerlo:", en:"The Diamond Design System's adoption was total. One developer spent 1 to 2 months implementing the system's base in code, and then the entire team joined in using, updating and maintaining it:" },
         bullets: {
-          es: ["🔄 Sistema vivo — se actualiza con cada nueva feature","📐 Los developers tienen una fuente de verdad única para UI","⏱️ Tiempo de desarrollo de nuevas features reducido significativamente","🎨 UI consistente a lo largo de toda la plataforma por primera vez"],
-          en: ["🔄 Living system — updates with every new platform feature","📐 Developers now have a single source of truth for UI","⏱️ New feature development time significantly reduced","🎨 Consistent UI across the entire platform for the first time"],
+          es: ["✅ Adopción del 100% — todos los desarrolladores adoptaron el sistema","👨‍💻 Implementación: 1 dev dedicado 1-2 meses a la base, luego todos contribuyeron","🔄 3 años después sigue vivo — se reutiliza cada vez que viene una funcionalidad nueva","👥 Los clientes notaron la consistencia, especialmente en los nuevos desarrollos","⚠️ Deuda técnica: muchas secciones antiguas mantienen estilos viejos que son difíciles de actualizar","📐 Los developers tienen una fuente de verdad única para UI por primera vez"],
+          en: ["✅ 100% adoption — all developers adopted the system","👨‍💻 Implementation: 1 dev dedicated 1-2 months to the base, then everyone contributed","🔄 3 years later still alive — reused every time a new feature comes in","👥 Clients noticed the consistency, especially in new developments","⚠️ Tech debt: many old sections still have old styles that are hard to update","📐 Developers have a single source of truth for UI for the first time"],
+        },
+        highlight: true,
+      },
+      {
+        phase: "results",
+        icon: "🏆", title: { es:"Un sistema vivo", en:"A living system" },
+        content: { es:"El Diamond Design System no tiene 'fin'. Surgen nuevas problemáticas, el producto evoluciona, componentes necesitan ajustes. Eso es signo de buena salud — un esfuerzo grande al principio que se convirtió en mantención continua ligera:", en:"The Diamond Design System has no 'end'. New challenges arise, the product evolves, components need adjustments. That's a sign of good health — a big effort upfront that became light continuous maintenance:" },
+        bullets: {
+          es: ["🔄 Sistema vivo — se actualiza con cada nueva feature del producto","⏱️ La inversión inicial de 3 semanas se ha pagado cientos de veces en tiempo de desarrollo ahorrado","🎨 UI consistente a lo largo de toda la plataforma por primera vez","💎 De 5 estilos distintos de botón a 1 sistema unificado — ese es el impacto"],
+          en: ["🔄 Living system — updates with every new product feature","⏱️ The initial 3-week investment has paid for itself hundreds of times in saved development time","🎨 Consistent UI across the entire platform for the first time","💎 From 5 different button styles to 1 unified system — that's the impact"],
+        },
+        highlight: true,
+      },
+    ],
+  },
+  rendimiento: {
+    title: { es: "Rediseño de Rendimiento de Equipo", en: "Team Performance Redesign" },
+    company: "Helpdesk SaaS",
+    role: "Product Designer → Product Owner",
+    period: "2024",
+    competency: { es: "Analytics · Data Viz · Iteración basada en feedback", en: "Analytics · Data Viz · Feedback-driven iteration" },
+    slides: [
+      /* ══════════════════════════════════════════
+         1. RESUMEN Y CONTEXTO
+         ══════════════════════════════════════════ */
+      {
+        phase: "context",
+        icon: "📈", title: { es:"Resumen", en:"Overview" },
+        content: { es:"Rediseñé la sección de Rendimiento de Equipo de una plataforma SaaS de atención al cliente. Los supervisores necesitaban entender la productividad de sus equipos — volumen de tickets, tiempos de resolución, nivel de servicio — pero la interfaz presentaba datos planos y gráficos de líneas confusos que no les permitían tomar decisiones rápidas.\n\nEl resultado fue un dashboard de analytics con gráficos de barras claros, dark mode, y documentación integrada que transformó datos crudos en información accionable para la gestión diaria del equipo.", en:"I redesigned the Team Performance section of a customer service SaaS platform. Supervisors needed to understand their team's productivity — ticket volume, resolution times, service level — but the interface showed flat data and confusing line charts that didn't support quick decision-making.\n\nThe result was an analytics dashboard with clear bar charts, dark mode, and integrated documentation that transformed raw data into actionable information for daily team management." },
+        tags: ["Analytics","Data Viz","Redesign","Dark Mode","Documentation"],
+      },
+      {
+        phase: "context",
+        icon: "🔥", title: { es:"El Problema", en:"The Problem" },
+        content: { es:"La sección de Historial era la herramienta principal para evaluar el rendimiento del equipo. Tenía tabs por dimensión (Tickets, Ejecutivos, Departamentos, Mensajes, Cuentas, Clientes) y mostraba KPIs como tickets creados, cerrados, ignorados, reabiertos y abordados. Pero la forma de presentar esta información tenía problemas fundamentales:", en:"The History section was the main tool for evaluating team performance. It had tabs by dimension (Tickets, Executives, Departments, Messages, Accounts, Clients) and showed KPIs like created, closed, ignored, reopened and attended tickets. But the way this information was presented had fundamental problems:" },
+        bullets: {
+          es: ["📊 Gráficos de líneas sobrecargados — múltiples series superpuestas que eran imposibles de comparar","🔢 Números planos sin contexto — KPIs como '1132 Creados' y '594 Ignorados' sin referencia de si eso era bueno o malo","📉 4 gráficos compitiendo por atención — distribución por estado, nivel de servicio, nivel de atención y evolución, todos iguales visualmente","🎨 Sin jerarquía visual — nada destacaba lo importante de lo secundario","[PENDIENTE: agregar más problemas específicos que descubriste]"],
+          en: ["📊 Overloaded line charts — multiple overlapping series impossible to compare","🔢 Flat numbers without context — KPIs like '1132 Created' and '594 Ignored' with no reference of whether that was good or bad","📉 4 charts competing for attention — distribution by state, service level, attention level and evolution, all visually identical","🎨 No visual hierarchy — nothing distinguished what was important from what was secondary","[PENDING: add more specific problems you discovered]"],
+        },
+      },
+      {
+        phase: "context",
+        icon: "🖥️", title: { es:"Estado previo", en:"Previous state" },
+        content: { es:"La versión existente usaba gráficos de líneas para todo tipo de dato, incluso cuando las barras habrían sido más apropiadas para comparar volúmenes. Los filtros de periodo y KPI estaban en una barra superior densa, y los datos tabulares se presentaban sin formato claro:", en:"The existing version used line charts for all data types, even when bars would have been more appropriate for comparing volumes. Period and KPI filters were in a dense top bar, and tabular data was presented without clear formatting:" },
+        images: [
+          { src: "/images/rend_old_graficos.png", caption: { es:"Dashboard anterior: gráficos de líneas confusos y KPIs planos", en:"Previous dashboard: confusing line charts and flat KPIs" } },
+          { src: "/images/rend_old_datos_planos.gif", caption: { es:"Vista de datos planos sin jerarquía visual", en:"Flat data view without visual hierarchy" } },
+        ],
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Investigación
+         ══════════════════════════════════════════ */
+      {
+        phase: "research",
+        icon: "👂", title: { es:"Investigación: entendiendo el dolor", en:"Research: understanding the pain" },
+        content: { es:"[PENDIENTE: ¿Cómo descubriste lo que los usuarios necesitaban? ¿Hiciste entrevistas, revisaste tickets de soporte, analizaste uso con analytics? ¿Qué insights clave encontraste?]", en:"[PENDING: How did you discover what users needed? Did you conduct interviews, review support tickets, analyze usage with analytics? What key insights did you find?]" },
+        bullets: {
+          es: ["[PENDIENTE: insight 1]","[PENDIENTE: insight 2]","[PENDIENTE: insight 3]"],
+          en: ["[PENDING: insight 1]","[PENDING: insight 2]","[PENDING: insight 3]"],
+        },
+      },
+      {
+        phase: "research",
+        icon: "🎯", title: { es:"Decisiones clave de diseño", en:"Key design decisions" },
+        content: { es:"[PENDIENTE: ¿Por qué elegiste gráficos de barras sobre líneas? ¿Por qué dark mode? ¿Qué alternativas consideraste y descartaste? Cada decisión debe tener un 'porque...']", en:"[PENDING: Why did you choose bar charts over lines? Why dark mode? What alternatives did you consider and discard? Each decision should have a 'because...']" },
+        bullets: {
+          es: ["📊 Barras en vez de líneas — [PENDIENTE: porque...]","🌙 Dark mode — [PENDIENTE: porque...]","📖 Documentación integrada — [PENDIENTE: porque...]","[PENDIENTE: otras decisiones]"],
+          en: ["📊 Bars instead of lines — [PENDING: because...]","🌙 Dark mode — [PENDING: because...]","📖 Integrated documentation — [PENDING: because...]","[PENDING: other decisions]"],
+        },
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Ideación
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "📝", title: { es:"La solución: analytics que se entienden", en:"The solution: analytics that make sense" },
+        content: { es:"[PENDIENTE: Describe la estructura de la solución. ¿Cómo reorganizaste la información? ¿Qué wireframes o esquemas creaste? ¿Cuál fue la lógica detrás de la nueva estructura?]", en:"[PENDING: Describe the solution structure. How did you reorganize the information? What wireframes or sketches did you create? What was the logic behind the new structure?]" },
+        image: "/images/rend_new_dashboard.gif",
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO DE DISEÑO — Iteración
+         ══════════════════════════════════════════ */
+      {
+        phase: "iteration",
+        icon: "🔧", title: { es:"Iteración: documentación y guías", en:"Iteration: documentation and guides" },
+        content: { es:"[PENDIENTE: ¿Qué cambió tras el primer lanzamiento? ¿Qué feedback recibiste? ¿Por qué agregaste la guía y la documentación integrada? ¿Qué problema resolvió?]", en:"[PENDING: What changed after the first launch? What feedback did you receive? Why did you add the guide and integrated documentation? What problem did it solve?]" },
+        images: [
+          { src: "/images/rend_new_con_guia.gif", caption: { es:"Dashboard con guía integrada para nuevos usuarios", en:"Dashboard with integrated guide for new users" } },
+          { src: "/images/rend_new_con_docs.gif", caption: { es:"Documentación accesible desde la misma sección", en:"Documentation accessible from the same section" } },
+        ],
+      },
+
+      /* ══════════════════════════════════════════
+         3. LA SOLUCIÓN Y RESULTADOS
+         ══════════════════════════════════════════ */
+      {
+        phase: "results",
+        icon: "🎬", title: { es:"La Solución Final", en:"The Final Solution" },
+        content: { es:"Un dashboard de rendimiento de equipo con gráficos de barras claros, dark mode, documentación integrada y guías contextuales. Diseñado para que los supervisores puedan evaluar la productividad de su equipo de un vistazo y tomar decisiones informadas sin salir de la plataforma.", en:"A team performance dashboard with clear bar charts, dark mode, integrated documentation and contextual guides. Designed so supervisors can evaluate their team's productivity at a glance and make informed decisions without leaving the platform." },
+        image: "/images/rend_new_dashboard.gif",
+        highlight: true,
+      },
+      {
+        phase: "results",
+        icon: "🏆", title: { es:"Resultados", en:"Results" },
+        content: { es:"[PENDIENTE: ¿Qué impacto tuvo el rediseño? Métricas, feedback cualitativo, adopción, testimonios. ¿Los usuarios dejaron de hacer algo que hacían antes? ¿Pidieron expandir el patrón a otras secciones?]", en:"[PENDING: What impact did the redesign have? Metrics, qualitative feedback, adoption, testimonials. Did users stop doing something they used to? Did they ask to expand the pattern to other sections?]" },
+        bullets: {
+          es: ["[PENDIENTE: resultado 1]","[PENDIENTE: resultado 2]","[PENDIENTE: resultado 3]"],
+          en: ["[PENDING: result 1]","[PENDING: result 2]","[PENDING: result 3]"],
         },
         highlight: true,
       },
