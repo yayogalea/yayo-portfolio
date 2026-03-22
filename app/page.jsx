@@ -49,7 +49,7 @@ Figma (4+ años, avanzado), Design Thinking, Atomic Design, Scrum/Kanban, Produc
 Historia de transformación: de datos ignorados a decisiones en tiempo real. Una plataforma de customer service tenía toda la data de productividad pero nadie la usaba — los supervisores extraían datos por API a herramientas externas. Visité oficina de cliente y descubrí que proyectaban data en pantalla gigante con alarmas visuales. 4 problemas UX: estados no visibles, canales confusos, filtros inconsistentes, patrones mal aplicados. Rediseñé con filtros unificados, cards por estado, KPIs visibles, sistema de alarmas. Primera encuesta: 67% positiva (dividida). Escuché el feedback, iteré. Segunda encuesta: 93% positiva. Resultado: usuarios dejaron herramienta externa, pidieron MÁS datos, alarmas se expandieron a otras secciones. Competencia demostrada: User Research + Iteración basada en data.
 
 ═══ PROYECTO: DIAMOND DESIGN SYSTEM ═══
-Historia de transformación: unificando una experiencia fragmentada. Plataforma CX con múltiples productos que se sentían como apps distintas. Diagnóstico: base pequeña, frameworks variados, UI incoherente. Construí DS con Atomic Design, retícula 8pts, Montserrat. Átomos, Moléculas, Organismos — cada nivel construye sobre el anterior. Filosofía de handoff: "el dev es traductor, no intérprete". Documentación exhaustiva, ejemplo AButton con todas sus variaciones. Sistema vivo en constante evolución. Figma público. Competencia demostrada: Pensamiento sistémico + Colaboración con desarrollo.
+Historia de transformación: unificando una experiencia fragmentada. Plataforma CX con múltiples productos que se sentían como apps distintas. Diagnóstico: base pequeña, frameworks variados, UI incoherente. Construí DS con Atomic Design, retícula 8pts, Rubik y Karla. Átomos, Moléculas, Organismos — cada nivel construye sobre el anterior. Filosofía de handoff: "el dev es traductor, no intérprete". Documentación exhaustiva, ejemplo AButton con todas sus variaciones. Sistema vivo en constante evolución. Figma público. Competencia demostrada: Pensamiento sistémico + Colaboración con desarrollo.
 
 ═══ PERSONALIDAD ═══
 Habla como Yayo (NUNCA "YayoBot"). Amigable, cercano, profesional. Usa 🤠 ocasionalmente. Destaca evolución Venezuela→Chile. Cuando le preguntan qué lo diferencia: Team Worker, Beginner's Mindset, Curious and Proactive.
@@ -114,20 +114,14 @@ const QUERIES = {
   es: [
     { icon:"👋", text:"¿Quién es Yayo?" },
     { icon:"🗺️", text:"¿Cuál ha sido tu trayectoria profesional?" },
-    { icon:"📊", text:"Cuéntame sobre Monitoreo 2.0" },
-    { icon:"💎", text:"¿Qué es el Diamond Design System?" },
     { icon:"🛠️", text:"¿Qué herramientas manejas?" },
-    { icon:"🏢", text:"¿Qué haces actualmente?" },
     { icon:"🤝", text:"¿Cómo puedo contactarte?" },
     { icon:"💰", text:"Cuéntame sobre el sistema de Billing" },
   ],
   en: [
     { icon:"👋", text:"Who is Yayo?" },
     { icon:"🗺️", text:"What's your career path?" },
-    { icon:"📊", text:"Tell me about Monitoring 2.0" },
-    { icon:"💎", text:"What is the Diamond Design System?" },
     { icon:"🛠️", text:"What tools do you use?" },
-    { icon:"🏢", text:"What do you do currently?" },
     { icon:"🤝", text:"How can I contact you?" },
     { icon:"💰", text:"Tell me about the Billing system" },
   ],
@@ -141,7 +135,7 @@ const C = { titleBar:"#000080", titleGrad:"linear-gradient(90deg,#000080,#1084D0
 /* ═══════════════════════════════════════════════════════════════
    STARFIELD SCREENSAVER (Canvas)
    ═══════════════════════════════════════════════════════════════ */
-function Starfield({ onRestore, lang }) {
+function Starfield({ onRestore, onOpenBilling, lang }) {
   const canvasRef = useRef(null);
   const starsRef = useRef([]);
   const animRef = useRef(null);
@@ -227,9 +221,8 @@ function Starfield({ onRestore, lang }) {
   }, []);
 
   const desktopIcons = [
-    {icon:"📁",label:lang==="es"?"Proyectos":"Projects",href:"https://yayo-dot-portfolio.framer.ai/"},
     {icon:"📋",label:"CV",href:"/images/Gabriel_Galea_CV_2026.pdf"},
-    {icon:"💎",label:"Diamond DS",href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo"},
+    {icon:"💰",label:"Proyecto Billing",action:onOpenBilling},
   ];
 
   return (
@@ -239,10 +232,17 @@ function Starfield({ onRestore, lang }) {
       {/* Desktop icons — same as normal desktop but on top of starfield */}
       <div style={{ position:"absolute",top:14,left:14,display:"flex",flexDirection:"column",gap:24,zIndex:6,userSelect:"none" }}>
         {desktopIcons.map((d,i)=>(
-          <a key={i} href={d.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none"}}>
-            <div style={{fontSize:34,filter:"drop-shadow(1px 2px 2px rgba(0,0,0,.7))"}}>{d.icon}</div>
-            <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 3px rgba(0,0,0,.95)",fontFamily:"'Segoe UI',Tahoma,sans-serif"}}>{d.label}</span>
-          </a>
+          d.action ? (
+            <div key={i} onClick={d.action} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none",cursor:"pointer"}}>
+              <div style={{fontSize:34,filter:"drop-shadow(1px 2px 2px rgba(0,0,0,.7))"}}>{d.icon}</div>
+              <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 3px rgba(0,0,0,.95)",fontFamily:"'Segoe UI',Tahoma,sans-serif"}}>{d.label}</span>
+            </div>
+          ) : (
+            <a key={i} href={d.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none"}}>
+              <div style={{fontSize:34,filter:"drop-shadow(1px 2px 2px rgba(0,0,0,.7))"}}>{d.icon}</div>
+              <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 3px rgba(0,0,0,.95)",fontFamily:"'Segoe UI',Tahoma,sans-serif"}}>{d.label}</span>
+            </a>
+          )
         ))}
       </div>
 
@@ -384,7 +384,7 @@ function CaseStudyCard({ galleryKey, lang, onOpen }) {
   const p = PROJECTS[galleryKey];
   if (!p) return null;
   const t = (v) => typeof v === "object" ? (v[lang] || v.es || v) : v;
-  const icons = { monitoreo:"📊", dds:"💎", rendimiento:"📈" };
+  const icons = { monitoreo:"📊", dds:"💎", rendimiento:"📈", billing:"💰" };
   return (
     <div style={{ margin:"6px 0",padding:0,maxWidth:360,animation:"w98fadeIn .3s ease" }}>
       <div onClick={()=>onOpen(galleryKey)} style={{
@@ -672,7 +672,6 @@ function StartMenu({ open, onClose, lang }) {
     { icon:"📧", label:"dotyayodot@gmail.com", href:"mailto:dotyayodot@gmail.com" },
     { icon:"💼", label:"LinkedIn", href:"https://www.linkedin.com/in/yayogalea/" },
     { icon:"📄", label:lang==="es"?"Descargar CV":"Download CV", href:"/images/Gabriel_Galea_CV_2026.pdf" },
-    { icon:"🌐", label:"Portafolio Framer", href:"https://yayo-dot-portfolio.framer.ai/" },
     { icon:"💎", label:"Diamond DS (Figma)", href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo" },
   ];
   return (<>
@@ -729,6 +728,8 @@ export default function YayoPortfolio() {
 
   const msgsRef = useRef(msgs);
   const loadingRef = useRef(false);
+  const langRef = useRef(lang);
+  useEffect(() => { langRef.current = lang; }, [lang]);
 
   // Wrapper that keeps ref always in sync
   const setMsgsSync = useCallback((updater) => {
@@ -764,7 +765,7 @@ export default function YayoPortfolio() {
 
     // Check knowledge base first
     const kbMatch = findKBMatch(text);
-    const kbResponse = kbMatch?.response?.[lang] || kbMatch?.response?.es;
+    const kbResponse = kbMatch?.response?.[langRef.current] || kbMatch?.response?.es;
 
     if (kbResponse) {
       // Simulate streaming from knowledge base
@@ -866,7 +867,7 @@ export default function YayoPortfolio() {
         // API failed — try KB with looser match or show offline message
         setMsgsSync(prev=>{
           const updated=[...prev];
-          updated[assistantIdx]={role:"assistant",content: lang==="es"
+          updated[assistantIdx]={role:"assistant",content: langRef.current==="es"
             ? "Estoy en modo offline ahora mismo 😅 Pero puedes explorar mis proyectos desde el menú de Proyectos arriba, o preguntarme por alguno de los temas sugeridos.\n\n[>>¿Quién es Yayo?]\n[>>¿Qué proyectos has hecho?]\n[>>¿Cómo puedo contactarte?]"
             : "I'm in offline mode right now 😅 But you can explore my projects from the Projects menu above, or ask me about any of the suggested topics.\n\n[>>Who is Yayo?]\n[>>What projects have you done?]\n[>>How can I contact you?]"
           };
@@ -895,10 +896,11 @@ export default function YayoPortfolio() {
     {icon:"🔄",label:lang==="es"?"Nueva conversación":"New conversation",action:resetChat},
   ];
 
+  const projectOrder = ["billing","monitoreo","dds","rendimiento"];
   const projectMenuItems = [
-    ...Object.entries(PROJECTS).filter(([,p]) => !p.hidden).map(([key, p]) => ({
+    ...projectOrder.filter(key => PROJECTS[key] && !PROJECTS[key].hidden).map(key => ({
       icon: {monitoreo:"📊",dds:"💎",rendimiento:"📈",billing:"💰"}[key] || "📁",
-      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : key === "rendimiento" ? (lang==="es"?"Rendimiento de Equipo":"Team Performance") : key === "billing" ? (lang==="es"?"Spreadsheets → Sistema financiero":"Spreadsheets → Financial system") : p.title[lang],
+      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : key === "rendimiento" ? (lang==="es"?"Rendimiento de Equipo":"Team Performance") : key === "billing" ? (lang==="es"?"Sistema de Billing":"Billing System") : PROJECTS[key].title[lang],
       action: () => { setGallery(key); setFresh(false); },
     })),
   ];
@@ -931,19 +933,25 @@ export default function YayoPortfolio() {
       {/* Desktop icons */}
       <div style={{position:"fixed",top:14,left:14,display:"flex",flexDirection:"column",gap:24,zIndex:1,userSelect:"none"}}>
         {[
-          {icon:"📁",label:lang==="es"?"Proyectos":"Projects",href:"https://yayo-dot-portfolio.framer.ai/"},
           {icon:"📋",label:"CV",href:"/images/Gabriel_Galea_CV_2026.pdf"},
-          {icon:"💎",label:"Diamond DS",href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo"},
+          {icon:"💰",label:"Proyecto Billing",action:()=>{ setGallery("billing"); setFresh(false); }},
         ].map((d,i)=>(
-          <a key={i} href={d.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none"}}>
-            <div style={{fontSize:34,filter:"drop-shadow(1px 1px 1px rgba(0,0,0,.4))"}}>{d.icon}</div>
-            <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 2px rgba(0,0,0,.9)",fontFamily:"inherit"}}>{d.label}</span>
-          </a>
+          d.action ? (
+            <div key={i} onClick={d.action} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none",cursor:"pointer"}}>
+              <div style={{fontSize:34,filter:"drop-shadow(1px 1px 1px rgba(0,0,0,.4))"}}>{d.icon}</div>
+              <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 2px rgba(0,0,0,.9)",fontFamily:"inherit"}}>{d.label}</span>
+            </div>
+          ) : (
+            <a key={i} href={d.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none"}}>
+              <div style={{fontSize:34,filter:"drop-shadow(1px 1px 1px rgba(0,0,0,.4))"}}>{d.icon}</div>
+              <span style={{color:"#fff",fontSize:11,textShadow:"1px 1px 2px rgba(0,0,0,.9)",fontFamily:"inherit"}}>{d.label}</span>
+            </a>
+          )
         ))}
       </div>
 
       {/* STARFIELD when minimized */}
-      {minimized && <Starfield onRestore={()=>setMinimized(false)} lang={lang} />}
+      {minimized && <Starfield onRestore={()=>setMinimized(false)} onOpenBilling={()=>{ setMinimized(false); setGallery("billing"); setFresh(false); }} lang={lang} />}
 
       {/* ─── MAIN WINDOW ─── */}
       {!minimized && (
