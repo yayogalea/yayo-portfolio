@@ -16,13 +16,13 @@ IMPORTANTE: NUNCA menciones el nombre "Adereso" en tus respuestas. Usa "Helpdesk
 
 ═══ PERFIL ═══
 - Nombre: Gabriel González Galea (Yayo)
-- Rol actual: Product Owner en un Helpdesk SaaS (desde dic 2025) + Diseñador UX/UI (desde oct 2023)
+- Rol actual: Product Owner en un Helpdesk SaaS (desde oct 2025) + Diseñador UX/UI (desde oct 2023)
 - Ubicación: Santiago, Chile | Origen: Venezuela
 - Email: dotyayodot@gmail.com
 - LinkedIn: linkedin.com/in/yayogalea
 - Educación: Lic. Diseño Gráfico, Universidad Arturo Michelena (2012-2017)
 - Idiomas: Español nativo, Inglés profesional
-- Experiencia: +8 años en diseño, +4 años como Product Designer, actualmente Product Owner
+- Experiencia: +10 años en diseño, +5 años como Product Designer, actualmente Product Owner
 - Autodidacta en UX/UI
 - Tiene 2 perros, toca bajo y juega videogames
 - Valores: Be Curious, Reframe Problems, Radical Collaboration, Avoid Clinging
@@ -30,26 +30,23 @@ IMPORTANTE: NUNCA menciones el nombre "Adereso" en tus respuestas. Usa "Helpdesk
 - Design Thinking es su religión
 
 ═══ CERTIFICACIONES ═══
-Power BI, Introduction to Design Systems, UI Design Patterns for Successful Software, Gestalt Psychology and Web Design, Conceptos Básicos de Costos
+IxDF — Interaction Design Foundation (Product Used: Adoption & Appropriation, UI Design Patterns for Software, Gestalt Psychology and Web Design, Agile Methods for UX Design, Journey Mapping, Design Thinking), Platzi — CX Research & UX Testing 2024, Figma — Intro to Design Systems 2023, IBM — Agile Dev and Scrum 2023, FutureLearn — Digital Skills: UX 2021, Webflow 101, Microsoft Power BI
 
 ═══ TRAYECTORIA ═══
-1. HELPDESK SAAS (Oct 2023-Presente) Santiago — Product Owner (dic 2025+) / UX/UI Designer. Plataforma de messaging y social customer service. Automatización, ticketing y analytics. 3 roles: Admin, Supervisor, Agent.
-2. PRICEMAKER (Oct 2021-Oct 2023) Santiago — Product Owner + Product Designer. SaaS Optimización de Promociones para CPG.
-3. VALIT (Abr 2019-Sep 2021) Santiago — Jefe de proyecto. Diseño gráfico, UX/UI, fotografía, ilustración.
-4. DJSCHOOL.CL (Feb 2020-Mar 2021) Santiago — Director de Arte, animador.
-5. DEMASDE (Abr 2018-Mar 2019) Santiago — Director de Arte. Catálogos Cruz Verde, etiquetas vino.
-6. CREATIVE SQUID (Dic 2016-Dic 2017) Caracas — Ilustrador. Indumentaria, estampados.
-7. ZEA_BBDO (Sep-Nov 2017) Caracas — Director de Arte Jr.
-8. PENTAGON MEDIA SOLUTIONS (Dic 2016-Abr 2017) Valencia — Diseño redes sociales.
+1. HELPDESK SAAS (Oct 2023-Presente) Santiago — Product Designer (UX/UI) & Product Owner (oct 2025+). Sole designer. Plataforma omnicanal de customer service con IA. 150+ clientes enterprise en retail, finanzas y telecom. Creó Diamond Design System, diseñó features con IA (bot flow builders, Adereso GPT), diseñó app móvil, rediseñó analytics. Como PO: definió KPIs trimestrales, coordinó Eng + Finance + CS + Support. Implementó surveys de adopción, tracking DAU/MAU con Amplitude. Construyó sistema de documentación automatizado con IA.
+2. PRICEMAKER (Oct 2021-Sep 2023) Santiago — Product Designer · UX/UI · Product Owner. SaaS B2B de pricing y promociones para CPG. Research end-to-end, service blueprints, handoff a desarrollo. Comunicación directa con stakeholders, backlog en Notion, QA. Ajustes front-end para apoyar al equipo de desarrollo.
+3. VALIT (Mar 2021-Sep 2021) Santiago — Product Manager, Product Designer & Art Director. Equipo de 3.
+4. DJ SCHOOL MUSIC ACADEMY (Feb 2020-Jul 2020) Santiago — Art Director. Branding. Web Design.
+5. GALLO DE FUEGO (Feb 2019-Ene 2020) — Freelance Designer. Branding. Ilustración.
+6. DEMASDE SPA (Mar 2018-Feb 2019) Santiago — Jr. Art Director.
+7. ZEA BBDO (Sep 2017-Dic 2017) Caracas — Jr. Art Director.
+8. PENTAGON MEDIA (Dic 2016-Jun 2017) — Jr. Art Director.
 
 ═══ SKILLS ═══
-Figma, Design Thinking, Atomic Design, Scrum/Kanban, Product Ownership, User Research, Wireframing, Prototipado, Documentación/Handoff, Power BI, Diseño gráfico, Ilustración, Animación, Fotografía
+Figma (4+ años, avanzado), Design Thinking, Atomic Design, Scrum/Kanban, Product Ownership, User Research, Wireframing, Prototipado, Documentación/Handoff, Amplitude (Analytics & Metrics), Power BI, IA & Vibe Coding (Claude, GPT, Cursor, GitHub Copilot), HTML/CSS/JS (3+ años, nivel medio), LowCode (Framer, Webflow), Adobe Suite (8+ años, avanzado), Notion/Jira, Liderazgo (2+ años), Diseño gráfico, Ilustración, Animación, Fotografía
 
 ═══ PROYECTO: MONITOREO 2.0 (Productivity Analytics) ═══
 Historia de transformación: de datos ignorados a decisiones en tiempo real. Una plataforma de customer service tenía toda la data de productividad pero nadie la usaba — los supervisores extraían datos por API a herramientas externas. Visité oficina de cliente y descubrí que proyectaban data en pantalla gigante con alarmas visuales. 4 problemas UX: estados no visibles, canales confusos, filtros inconsistentes, patrones mal aplicados. Rediseñé con filtros unificados, cards por estado, KPIs visibles, sistema de alarmas. Primera encuesta: 67% positiva (dividida). Escuché el feedback, iteré. Segunda encuesta: 93% positiva. Resultado: usuarios dejaron herramienta externa, pidieron MÁS datos, alarmas se expandieron a otras secciones. Competencia demostrada: User Research + Iteración basada en data.
-
-═══ PROYECTO: AI BOT FLOW BUILDER ═══
-Historia de transformación: de listas confusas a un canvas visual. Los bots de atención son poderosos pero construirlos era una pesadilla — flujos en lista plana, sin conexión entre ellos, opciones avanzadas solo en backend. Trabajé con usuarios beta internos. Rediseñé como canvas visual con nodos arrastrables tipo Figma/Miro: condiciones con ramas, mensajes, obtención de datos, derivación. Handoff detallado con specs de cada nodo. Iteré: comprimí headers, hice prominente botón guardar, añadí breadcrumb. Resultado: lista deprecada, adopción instantánea, flujos conectables, modo avanzado con código. Competencia demostrada: Diseño de interacciones complejas + Adopción.
 
 ═══ PROYECTO: DIAMOND DESIGN SYSTEM ═══
 Historia de transformación: unificando una experiencia fragmentada. Plataforma CX con múltiples productos que se sentían como apps distintas. Diagnóstico: base pequeña, frameworks variados, UI incoherente. Construí DS con Atomic Design, retícula 8pts, Montserrat. Átomos, Moléculas, Organismos — cada nivel construye sobre el anterior. Filosofía de handoff: "el dev es traductor, no intérprete". Documentación exhaustiva, ejemplo AButton con todas sus variaciones. Sistema vivo en constante evolución. Figma público. Competencia demostrada: Pensamiento sistémico + Colaboración con desarrollo.
@@ -110,8 +107,8 @@ NO hagas esto:
    i18n
    ═══════════════════════════════════════════════════════════════ */
 const T = {
-  es: { greeting:"¡Hola! Soy Yayo", subtitle:"Product Owner & Designer con +8 años de experiencia.", subtitle2:"De Venezuela a Chile, del diseño gráfico al producto digital.", subtitle3:"Pregúntame lo que quieras sobre mi trabajo.", suggested:"— Consultas Sugeridas —", placeholder:"Escribe tu pregunta aquí...", thinking:"Yayo está escribiendo...", send:"Enviar", ready:"Listo", processing:"Procesando...", queries:"consultas", start:"Inicio", yrsDesign:"años diseño", yrsProduct:"años producto", companies:"empresas", projects:"Proyectos", contact:"Contacto", chat:"Chat", langToggle:"EN", restore:"Abrir Yayo.exe" },
-  en: { greeting:"Hi! I'm Yayo", subtitle:"Product Owner & Designer with 8+ years of experience.", subtitle2:"From Venezuela to Chile, from graphic design to digital product.", subtitle3:"Ask me anything about my work.", suggested:"— Suggested Queries —", placeholder:"Type your question here...", thinking:"Yayo is typing...", send:"Send", ready:"Ready", processing:"Processing...", queries:"queries", start:"Start", yrsDesign:"yrs design", yrsProduct:"yrs product", companies:"companies", projects:"Projects", contact:"Contact", chat:"Chat", langToggle:"ES", restore:"Open Yayo.exe" },
+  es: { greeting:"¡Hola! Soy Yayo", subtitle:"Product Owner & Designer con +10 años de experiencia.", subtitle2:"De Venezuela a Chile, del diseño gráfico al producto digital.", subtitle3:"Pregúntame lo que quieras sobre mi trabajo.", suggested:"— Consultas Sugeridas —", placeholder:"Escribe tu pregunta aquí...", thinking:"Yayo está escribiendo...", send:"Enviar", ready:"Listo", processing:"Procesando...", queries:"consultas", start:"Inicio", yrsDesign:"años diseño", yrsProduct:"años producto", companies:"empresas", projects:"Proyectos", contact:"Contacto", chat:"Chat", langToggle:"EN", restore:"Abrir Yayo.exe" },
+  en: { greeting:"Hi! I'm Yayo", subtitle:"Product Owner & Designer with 10+ years of experience.", subtitle2:"From Venezuela to Chile, from graphic design to digital product.", subtitle3:"Ask me anything about my work.", suggested:"— Suggested Queries —", placeholder:"Type your question here...", thinking:"Yayo is typing...", send:"Send", ready:"Ready", processing:"Processing...", queries:"queries", start:"Start", yrsDesign:"yrs design", yrsProduct:"yrs product", companies:"companies", projects:"Projects", contact:"Contact", chat:"Chat", langToggle:"ES", restore:"Open Yayo.exe" },
 };
 const QUERIES = {
   es: [
@@ -229,7 +226,7 @@ function Starfield({ onRestore, lang }) {
 
   const desktopIcons = [
     {icon:"📁",label:lang==="es"?"Proyectos":"Projects",href:"https://yayo-dot-portfolio.framer.ai/"},
-    {icon:"📋",label:"CV",href:"https://drive.google.com/file/d/18lQroRSzU6KPJ3gYl6N3PRzW7nFQFmhZ/view"},
+    {icon:"📋",label:"CV",href:"/images/Gabriel_Galea_CV_2026.pdf"},
     {icon:"💎",label:"Diamond DS",href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo"},
   ];
 
@@ -367,7 +364,7 @@ function CaseStudyCard({ galleryKey, lang, onOpen }) {
   const p = PROJECTS[galleryKey];
   if (!p) return null;
   const t = (v) => typeof v === "object" ? (v[lang] || v.es || v) : v;
-  const icons = { monitoreo:"📊", flowbuilder:"🤖", dds:"💎" };
+  const icons = { monitoreo:"📊", dds:"💎", rendimiento:"📈" };
   return (
     <div style={{ margin:"6px 0",padding:0,maxWidth:360,animation:"w98fadeIn .3s ease" }}>
       <div onClick={()=>onOpen(galleryKey)} style={{
@@ -649,7 +646,7 @@ function StartMenu({ open, onClose, lang }) {
   const links = [
     { icon:"📧", label:"dotyayodot@gmail.com", href:"mailto:dotyayodot@gmail.com" },
     { icon:"💼", label:"LinkedIn", href:"https://www.linkedin.com/in/yayogalea/" },
-    { icon:"📄", label:lang==="es"?"Descargar CV":"Download CV", href:"https://drive.google.com/file/d/18lQroRSzU6KPJ3gYl6N3PRzW7nFQFmhZ/view" },
+    { icon:"📄", label:lang==="es"?"Descargar CV":"Download CV", href:"/images/Gabriel_Galea_CV_2026.pdf" },
     { icon:"🌐", label:"Portafolio Framer", href:"https://yayo-dot-portfolio.framer.ai/" },
     { icon:"💎", label:"Diamond DS (Figma)", href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo" },
   ];
@@ -767,8 +764,8 @@ export default function YayoPortfolio() {
       if (!hintKey) {
         const lower = text.toLowerCase();
         if (lower.includes("monitoreo")||lower.includes("monitoring")) hintKey = "monitoreo";
-        else if (!PROJECTS.flowbuilder?.hidden && (lower.includes("bot")||lower.includes("flow builder"))) hintKey = "flowbuilder";
         else if (lower.includes("diamond")||lower.includes("design system")) hintKey = "dds";
+        else if (lower.includes("rendimiento")||lower.includes("performance")||lower.includes("team performance")) hintKey = "rendimiento";
       }
       if (hintKey) {
         setMsgsSync(prev => [...prev, { role:"gallery-hint", galleryKey: hintKey }]);
@@ -835,8 +832,8 @@ export default function YayoPortfolio() {
         const lower=text.toLowerCase();
         let apiHintKey = null;
         if(lower.includes("monitoreo")||lower.includes("monitoring")||lower.includes("analytics")||lower.includes("dashboard")||lower.includes("productiv")) apiHintKey="monitoreo";
-        else if(!PROJECTS.flowbuilder?.hidden && (lower.includes("bot")||lower.includes("flow builder")||lower.includes("chatbot")||lower.includes("automation")||lower.includes("flujo"))) apiHintKey="flowbuilder";
         else if(lower.includes("diamond")||lower.includes("design system")||lower.includes("dds")) apiHintKey="dds";
+        else if(lower.includes("rendimiento")||lower.includes("performance")||lower.includes("team performance")) apiHintKey="rendimiento";
         if (apiHintKey) setMsgsSync(prev => [...prev, { role:"gallery-hint", galleryKey: apiHintKey }]);
       }catch{
         // API failed — try KB with looser match or show offline message
@@ -873,15 +870,15 @@ export default function YayoPortfolio() {
 
   const projectMenuItems = [
     ...Object.entries(PROJECTS).filter(([,p]) => !p.hidden).map(([key, p]) => ({
-      icon: {monitoreo:"📊",flowbuilder:"🤖",dds:"💎"}[key] || "📁",
-      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : p.title[lang],
+      icon: {monitoreo:"📊",dds:"💎",rendimiento:"📈"}[key] || "📁",
+      label: key === "monitoreo" ? (lang==="es"?"Monitoreo 2.0":"Monitoring 2.0") : key === "dds" ? "Diamond Design System" : key === "rendimiento" ? (lang==="es"?"Rendimiento de Equipo":"Team Performance") : p.title[lang],
       action: () => { setGallery(key); setFresh(false); },
     })),
   ];
   const contactMenuItems = [
     {icon:"📧",label:"dotyayodot@gmail.com",href:"mailto:dotyayodot@gmail.com"},
     {icon:"💼",label:"LinkedIn",href:"https://www.linkedin.com/in/yayogalea/"},
-    {icon:"📄",label:lang==="es"?"Descargar CV":"Download CV",href:"https://drive.google.com/file/d/18lQroRSzU6KPJ3gYl6N3PRzW7nFQFmhZ/view"},
+    {icon:"📄",label:lang==="es"?"Descargar CV":"Download CV",href:"/images/Gabriel_Galea_CV_2026.pdf"},
   ];
 
   const wb={width:18,height:16,background:C.face,border:"2px outset "+C.outset,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,fontWeight:"bold",cursor:"pointer",lineHeight:1,fontFamily:"inherit"};
@@ -908,7 +905,7 @@ export default function YayoPortfolio() {
       <div style={{position:"fixed",top:14,left:14,display:"flex",flexDirection:"column",gap:24,zIndex:1,userSelect:"none"}}>
         {[
           {icon:"📁",label:lang==="es"?"Proyectos":"Projects",href:"https://yayo-dot-portfolio.framer.ai/"},
-          {icon:"📋",label:"CV",href:"https://drive.google.com/file/d/18lQroRSzU6KPJ3gYl6N3PRzW7nFQFmhZ/view"},
+          {icon:"📋",label:"CV",href:"/images/Gabriel_Galea_CV_2026.pdf"},
           {icon:"💎",label:"Diamond DS",href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo"},
         ].map((d,i)=>(
           <a key={i} href={d.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:3,textDecoration:"none"}}>
@@ -973,7 +970,7 @@ export default function YayoPortfolio() {
                     {t.subtitle}<br/>{t.subtitle2}<br/>{t.subtitle3}
                   </div>
                   <div style={{display:"flex",gap:12,marginTop:4}}>
-                    {[{n:"+8",l:t.yrsDesign},{n:"+4",l:t.yrsProduct},{n:"8+",l:t.companies}].map((s,i)=>(
+                    {[{n:"10+",l:t.yrsDesign},{n:"+5",l:t.yrsProduct}].map((s,i)=>(
                       <div key={i} style={{border:"2px inset "+C.inset,padding:"6px 10px",textAlign:"center",background:"#fff"}}>
                         <div style={{fontFamily:"'Trebuchet MS',Tahoma,sans-serif",fontSize:20,color:C.accent,fontWeight:"bold"}}>{s.n}</div>
                         <div style={{fontSize:10,color:C.txtMuted}}>{s.l}</div>

@@ -144,127 +144,6 @@ export const PROJECTS = {
       },
     ],
   },
-  flowbuilder: {
-    hidden: true,
-    title: { es: "De listas confusas a un canvas visual", en: "From confusing lists to a visual canvas" },
-    company: "Helpdesk SaaS",
-    role: "Product Designer",
-    period: "2023 — 2024",
-    competency: { es: "Diseño de interacciones complejas · Adopción", en: "Complex interaction design · Adoption" },
-    slides: [
-      /* ── CONTEXT ── */
-      {
-        phase: "context",
-        icon: "🤖", title: { es:"El Desafío", en:"The Challenge" },
-        content: { es:"Los bots de atención al cliente son poderosos: filtran spam, recopilan datos, encuentran información y reducen tiempos de atención. Pero construirlos era una pesadilla. Los flujos se armaban mediante una lista plana — como intentar entender un árbol de decisiones leyendo un documento de texto.", en:"Customer service bots are powerful: they filter spam, gather data, find information and reduce response times. But building them was a nightmare. Flows were assembled through a flat list — like trying to understand a decision tree by reading a text document." },
-        tags: ["AI","Flow Builder","Interaction Design","0→1","Adoption"],
-      },
-      {
-        phase: "context",
-        icon: "🔄", title: { es:"Cómo funciona el sistema", en:"How the system works" },
-        content: { es:"El sistema funciona en dos ámbitos: lo que pasa dentro del bot (configuración) y lo que pasa fuera (interacción con el cliente). Esta dualidad era clave para diseñar la experiencia:", en:"The system works in two scopes: what happens inside the bot (configuration) and what happens outside (client interaction). This duality was key to designing the experience:" },
-        flow: { es:["Crear Bot AI","Conectar Cuenta","Crear Intenciones","Crear Flujos","Cliente Escribe","Bot Identifica","Dispara Flujo"], en:["Create AI Bot","Connect Account","Create Intentions","Create Flows","Client Writes","Bot Identifies","Triggers Flow"] },
-        bullets: {
-          es: ["🤖 DENTRO: Admin crea bot → conecta cuenta → define intenciones → crea flujos por intención","👤 FUERA: Cliente escribe → se crea ticket → bot identifica intención → dispara flujo o deriva a agente"],
-          en: ["🤖 INSIDE: Admin creates bot → connects account → defines intentions → creates flows per intention","👤 OUTSIDE: Client writes → ticket created → bot identifies intention → triggers flow or routes to agent"],
-        },
-      },
-      {
-        phase: "context",
-        icon: "😤", title: { es:"Lo que no funcionaba", en:"What wasn't working" },
-        content: { es:"El producto estaba en beta con pocos usuarios, mayoría internos. Al investigar, encontramos problemas fundamentales:", en:"The product was in beta with few users, mostly internal. When investigating, we found fundamental problems:" },
-        bullets: {
-          es: ["🤨 Los flujos se construían mediante una LISTA — imposible entender la lógica completa","💻 Muchas opciones avanzadas existían en backend pero no en la interfaz","😰 Cada flujo era un silo — no se podían conectar entre sí","😵 Entender flujos completos era confuso incluso para usuarios avanzados","🔍 Encontrar un nodo específico era como buscar una aguja en un pajar"],
-          en: ["🤨 Flows were built through a LIST — impossible to understand the full logic","💻 Many advanced options existed in backend but not in the interface","😰 Each flow was a silo — couldn't connect them to each other","😵 Understanding complete flows was confusing even for advanced users","🔍 Finding a specific node was like finding a needle in a haystack"],
-        },
-      },
-      /* ── RESEARCH ── */
-      {
-        phase: "research",
-        icon: "👂", title: { es:"Lo que nos dijeron los usuarios", en:"What users told us" },
-        content: { es:"Trabajamos con usuarios beta internos que construían bots diariamente. Sus frustraciones nos guiaron:", en:"We worked with internal beta users who built bots daily. Their frustrations guided us:" },
-        bullets: {
-          es: ["📋 No podían visualizar la lógica completa sin navegar ida y vuelta entre vistas","🔄 Cambiar una condición requería múltiples pasos que podían romper el flujo","📱 Los más técnicos querían acceso a opciones que solo existían en consola","🧩 La desconexión entre flujos hacía imposible reutilizar lógica común"],
-          en: ["📋 Couldn't visualize the complete logic without navigating back and forth between views","🔄 Changing a condition required multiple steps that could break the flow","📱 More technical users wanted access to options that only existed in console","🧩 The disconnection between flows made it impossible to reuse common logic"],
-        },
-      },
-      /* ── GOALS ── */
-      {
-        phase: "goals",
-        icon: "🎯", title: { es:"El objetivo: pensar visualmente", en:"The goal: think visually" },
-        content: { es:"La construcción de bots es inherentemente visual — son árboles de decisión. La interfaz debía reflejar esa naturaleza:", en:"Bot building is inherently visual — they're decision trees. The interface had to reflect that nature:" },
-        bullets: {
-          es: ["🧠 Que se entienda un flujo completo de un vistazo — como un diagrama de flujo real","🪜 Flujos escalables y conectables entre sí — eliminar silos","💻 Modo avanzado para power users — sin perder simplicidad","🌳 Canvas visual tipo Figma/Miro en vez de lista"],
-          en: ["🧠 Understand a complete flow at a glance — like a real flowchart","🪜 Scalable and connectable flows — eliminate silos","💻 Advanced mode for power users — without losing simplicity","🌳 Visual canvas like Figma/Miro instead of a list"],
-        },
-      },
-      /* ── WIREFRAMES ── */
-      {
-        phase: "wireframes",
-        icon: "✏️", title: { es:"De sketch a wireframe", en:"From sketch to wireframe" },
-        content: { es:"Empecé con sketches a mano y evolucioné a wireframes de alta fidelidad. Transformé la lista en un canvas con nodos arrastrables:", en:"Started with hand sketches, evolved to high-fidelity wireframes. Transformed the list into a canvas with draggable nodes:" },
-        bullets: {
-          es: ["📐 Canvas visual con nodos arrastrables — como Figma o Miro","🔀 Condiciones con ramas A, B, C y 'De lo contrario'","📝 Tipos de nodo: Mensajes, Obtención de datos, Metadatos, Derivación","📋 Panel lateral para agregar instrucciones arrastrándolas al canvas"],
-          en: ["📐 Visual canvas with draggable nodes — like Figma or Miro","🔀 Conditions with branches A, B, C and 'Otherwise'","📝 Node types: Messages, Data gathering, Metadata, Derivation","📋 Side panel to add instructions by dragging to canvas"],
-        },
-      },
-      {
-        phase: "wireframes",
-        icon: "🔀", title: { es:"Diseño de nodos", en:"Node design" },
-        content: { es:"El diseño de cada tipo de nodo fue crítico. Las condiciones eran el elemento más complejo — necesitaban mostrar branching visual claro:", en:"Each node type's design was critical. Conditions were the most complex element — they needed to show clear visual branching:" },
-        bullets: {
-          es: ["🟦 Nodos de mensaje — contenido directo al cliente","🔀 Nodos de condición — ramas visuales con etiquetas A, B, C","📥 Nodos de obtención de datos — recopilación de info del cliente","🏁 Nodos terminales — Derivación a agente, Cierre, Ignorar"],
-          en: ["🟦 Message nodes — direct content to client","🔀 Condition nodes — visual branches with labels A, B, C","📥 Data gathering nodes — collecting client info","🏁 Terminal nodes — Route to agent, Close, Ignore"],
-        },
-      },
-      /* ── PROTOTYPE ── */
-      {
-        phase: "prototype",
-        icon: "💻", title: { es:"El prototipo", en:"The prototype" },
-        content: { es:"El prototipo implementó la visión completa del flow builder como un editor visual de nodos:", en:"The prototype implemented the full vision of the flow builder as a visual node editor:" },
-        bullets: {
-          es: ["📋 Vista de lista de flujos con disparadores y estados on/off","🌳 Editor visual con nodos conectados por líneas","📝 Panel de instrucciones: Mensaje, Obtención de datos, Condición, Consulta HTTP","🏁 Instrucciones terminales: Derivación, Cierre, Ignorar","✏️ Edición inline al clickear nodos"],
-          en: ["📋 Flow list view with triggers and on/off states","🌳 Visual editor with line-connected nodes","📝 Instruction panel: Message, Data gathering, Condition, HTTP Query","🏁 Terminal instructions: Derivation, Close, Ignore","✏️ Inline editing on node click"],
-        },
-      },
-      {
-        phase: "prototype",
-        icon: "📦", title: { es:"Handoff a desarrollo", en:"Dev handoff" },
-        content: { es:"Documenté cada tipo de instrucción con specs exactos. El handoff incluía todos los estados posibles de cada nodo y sus interacciones:", en:"I documented every instruction type with exact specs. The handoff included all possible states of each node and their interactions:" },
-        bullets: {
-          es: ["📘 Documentación completa de todos los tipos de instrucciones","🔗 Specs de conexión entre nodos — reglas de qué puede conectar con qué","🎨 Estados visuales: default, hover, selected, error, disabled","📐 Figma detallado con medidas exactas"],
-          en: ["📘 Complete documentation of all instruction types","🔗 Node connection specs — rules for what can connect to what","🎨 Visual states: default, hover, selected, error, disabled","📐 Detailed Figma with exact measurements"],
-        },
-      },
-      {
-        phase: "prototype",
-        icon: "🖥️", title: { es:"Prototipo interactivo", en:"Interactive prototype" },
-        content: { es:"Explora el prototipo del Flow Builder en Figma. Navega por las pantallas para ver la experiencia del canvas visual en detalle:", en:"Explore the Flow Builder prototype in Figma. Navigate through the screens to see the visual canvas experience in detail:" },
-        figmaEmbed: "https://www.figma.com/proto/uL9YK8WAAwGU739SFw6kRn/FLUJOS.-Visualizaci%C3%B3n-de-Flujos--LISTO---Copy-?page-id=2%3A25&node-id=7219-66754&node-type=frame&viewport=1881%2C952%2C0.21&t=JqzNd32DJwplF0pE-1&scaling=contain&content-scaling=fixed",
-      },
-      /* ── ITERATION ── */
-      {
-        phase: "iteration",
-        icon: "🔧", title: { es:"Lo que ajustamos", en:"What we adjusted" },
-        content: { es:"Tras las primeras pruebas con usuarios reales, identificamos problemas y los resolvimos:", en:"After initial testing with real users, we identified problems and resolved them:" },
-        bullets: {
-          es: ["📏 Headers ocupaban demasiado espacio vertical — se comprimieron","💾 Botón guardar poco visible — se hizo prominente con alerta al salir sin guardar","🧭 Se añadió breadcrumb de navegación para ubicarse","🚨 Alerta persistente de 'Recuerda guardar' para evitar pérdida de trabajo"],
-          en: ["📏 Headers consumed too much vertical space — compressed","💾 Save button wasn't visible enough — made prominent with exit-without-saving alert","🧭 Navigation breadcrumb added for orientation","🚨 Persistent 'Remember to save' alert to prevent work loss"],
-        },
-      },
-      /* ── RESULTS ── */
-      {
-        phase: "results",
-        icon: "🏆", title: { es:"El impacto", en:"The impact" },
-        content: { es:"El nuevo Flow Builder transformó completamente cómo se construyen bots en la plataforma:", en:"The new Flow Builder completely transformed how bots are built on the platform:" },
-        bullets: {
-          es: ["🗑️ La vista de lista se deprecó — adopción instantánea del canvas","🔗 Flujos conectables entre sí — menos trabajo para los usuarios","💻 Modo avanzado con edición de código — power users autónomos","👀 Flujos comprensibles de un vistazo con zoom y reorganización automática"],
-          en: ["🗑️ List view deprecated — instant canvas adoption","🔗 Connectable flows — less work for users","💻 Advanced mode with code editing — autonomous power users","👀 Flows understandable at a glance with zoom and auto-reorganize"],
-        },
-        highlight: true,
-      },
-    ],
-  },
   dds: {
     title: { es: "Unificando una experiencia fragmentada", en: "Unifying a fragmented experience" },
     company: "CX Platform",
@@ -405,9 +284,9 @@ export const PROJECTS = {
   rendimiento: {
     title: { es: "Rediseño de Rendimiento de Equipo", en: "Team Performance Redesign" },
     company: "Helpdesk SaaS",
-    role: "Product Designer → Product Owner",
-    period: "2024",
-    competency: { es: "Analytics · Data Viz · Iteración basada en feedback", en: "Analytics · Data Viz · Feedback-driven iteration" },
+    role: "Product Designer",
+    period: "2025",
+    competency: { es: "Analytics · Data Viz · Definición de datos · Diseño en fases", en: "Analytics · Data Viz · Data definition · Phased design" },
     slides: [
       /* ══════════════════════════════════════════
          1. RESUMEN Y CONTEXTO
@@ -415,90 +294,111 @@ export const PROJECTS = {
       {
         phase: "context",
         icon: "📈", title: { es:"Resumen", en:"Overview" },
-        content: { es:"Rediseñé la sección de Rendimiento de Equipo de una plataforma SaaS de atención al cliente. Los supervisores necesitaban entender la productividad de sus equipos — volumen de tickets, tiempos de resolución, nivel de servicio — pero la interfaz presentaba datos planos y gráficos de líneas confusos que no les permitían tomar decisiones rápidas.\n\nEl resultado fue un dashboard de analytics con gráficos de barras claros, dark mode, y documentación integrada que transformó datos crudos en información accionable para la gestión diaria del equipo.", en:"I redesigned the Team Performance section of a customer service SaaS platform. Supervisors needed to understand their team's productivity — ticket volume, resolution times, service level — but the interface showed flat data and confusing line charts that didn't support quick decision-making.\n\nThe result was an analytics dashboard with clear bar charts, dark mode, and integrated documentation that transformed raw data into actionable information for daily team management." },
-        tags: ["Analytics","Data Viz","Redesign","Dark Mode","Documentation"],
+        content: { es:"La sección de Rendimiento de Equipo es el centro de analytics de una plataforma SaaS de atención al cliente. Los analistas y administradores necesitan evaluar la productividad de sus agentes — volumen de tickets, tiempos de primera atención, eficiencia y satisfacción — pero la sección existente presentaba datos dispersos en categorías poco intuitivas que obligaban a los usuarios a exportar y procesar la información por su cuenta.\n\nJunto a la Product Owner y el equipo de Customer Care, redefinimos desde cero qué datos debían mostrarse y cómo. Lo que más tiempo tomó no fue el diseño visual, sino la definición de los datos que realmente darían valor. El resultado fue un dashboard con filtros combinables, gráficos claros y tablas desplegables que transformó datos crudos en información accionable.", en:"The Team Performance section is the analytics hub of a customer service SaaS platform. Analysts and admins need to evaluate their agents' productivity — ticket volume, first response times, efficiency and satisfaction — but the existing section presented data scattered across unintuitive categories that forced users to export and process information on their own.\n\nTogether with the Product Owner and Customer Care team, we redefined from scratch what data should be shown and how. What took the most time wasn't the visual design, but defining the data that would truly deliver value. The result was a dashboard with combinable filters, clear charts and expandable tables that transformed raw data into actionable information." },
+        tags: ["Analytics","Data Viz","Data Definition","Phased Delivery","Contact Center"],
       },
       {
         phase: "context",
         icon: "🔥", title: { es:"El Problema", en:"The Problem" },
-        content: { es:"La sección de Historial era la herramienta principal para evaluar el rendimiento del equipo. Tenía tabs por dimensión (Tickets, Ejecutivos, Departamentos, Mensajes, Cuentas, Clientes) y mostraba KPIs como tickets creados, cerrados, ignorados, reabiertos y abordados. Pero la forma de presentar esta información tenía problemas fundamentales:", en:"The History section was the main tool for evaluating team performance. It had tabs by dimension (Tickets, Executives, Departments, Messages, Accounts, Clients) and showed KPIs like created, closed, ignored, reopened and attended tickets. But the way this information was presented had fundamental problems:" },
+        content: { es:"Un ticket es una consulta de un cliente a través de un canal como WhatsApp, Instagram, Facebook o email. Los agentes atienden estas consultas y los analistas/administradores necesitan evaluar su rendimiento. La sección de Historial era su herramienta principal, pero tenía problemas fundamentales:", en:"A ticket is a customer inquiry through a channel like WhatsApp, Instagram, Facebook or email. Agents handle these inquiries and analysts/admins need to evaluate their performance. The History section was their main tool, but it had fundamental problems:" },
         bullets: {
-          es: ["📊 Gráficos de líneas sobrecargados — múltiples series superpuestas que eran imposibles de comparar","🔢 Números planos sin contexto — KPIs como '1132 Creados' y '594 Ignorados' sin referencia de si eso era bueno o malo","📉 4 gráficos compitiendo por atención — distribución por estado, nivel de servicio, nivel de atención y evolución, todos iguales visualmente","🎨 Sin jerarquía visual — nada destacaba lo importante de lo secundario","[PENDIENTE: agregar más problemas específicos que descubriste]"],
-          en: ["📊 Overloaded line charts — multiple overlapping series impossible to compare","🔢 Flat numbers without context — KPIs like '1132 Created' and '594 Ignored' with no reference of whether that was good or bad","📉 4 charts competing for attention — distribution by state, service level, attention level and evolution, all visually identical","🎨 No visual hierarchy — nothing distinguished what was important from what was secondary","[PENDING: add more specific problems you discovered]"],
+          es: ["🗂️ Datos valiosos fragmentados en categorías aisladas — Departamentos, Cuentas, Ejecutivos y Tickets mostraban información relevante para las demás, pero no se podían cruzar","🔄 Combinaciones imposibles — un analista no podía ver 'tickets abordados por el agente X en el departamento Y durante marzo'. Tenía que entrar a cada tab por separado","📊 Gráficos de líneas sobrecargados — múltiples series superpuestas imposibles de comparar, sin indicar si un dato era bueno o malo","📤 La sección era solo un punto de exportación — los usuarios entraban, descargaban el detalle y lo procesaban en Excel para poder ordenarlo de manera intuitiva","⏱️ Visitas muy bajas y cortas según Amplitude — los usuarios no pasaban tiempo suficiente como para descubrir información valiosa"],
+          en: ["🗂️ Valuable data fragmented across isolated categories — Departments, Accounts, Executives and Tickets each showed information relevant to others, but couldn't be cross-referenced","🔄 Impossible combinations — an analyst couldn't see 'tickets handled by agent X in department Y during March'. They had to check each tab separately","📊 Overloaded line charts — multiple overlapping series impossible to compare, with no indication of whether a metric was good or bad","📤 The section was just an export point — users entered, downloaded the detail and processed it in Excel to organize it intuitively","⏱️ Very low and short visits according to Amplitude — users didn't spend enough time to discover valuable information"],
         },
       },
       {
         phase: "context",
         icon: "🖥️", title: { es:"Estado previo", en:"Previous state" },
-        content: { es:"La versión existente usaba gráficos de líneas para todo tipo de dato, incluso cuando las barras habrían sido más apropiadas para comparar volúmenes. Los filtros de periodo y KPI estaban en una barra superior densa, y los datos tabulares se presentaban sin formato claro:", en:"The existing version used line charts for all data types, even when bars would have been more appropriate for comparing volumes. Period and KPI filters were in a dense top bar, and tabular data was presented without clear formatting:" },
+        content: { es:"La información estaba agrupada en categorías no intuitivas (Tickets, Ejecutivos, Departamentos, Mensajes, Cuentas, Clientes). Cada una mostraba datos que también habrían sido valiosos en otras categorías, pero unificarlos era imposible. El resultado: una sección que los usuarios solo visitaban para exportar.", en:"Information was grouped in unintuitive categories (Tickets, Executives, Departments, Messages, Accounts, Clients). Each showed data that would have also been valuable in other categories, but unifying them was impossible. The result: a section users only visited to export." },
         images: [
-          { src: "/images/rend_old_graficos.png", caption: { es:"Dashboard anterior: gráficos de líneas confusos y KPIs planos", en:"Previous dashboard: confusing line charts and flat KPIs" } },
-          { src: "/images/rend_old_datos_planos.gif", caption: { es:"Vista de datos planos sin jerarquía visual", en:"Flat data view without visual hierarchy" } },
+          { src: "/images/rend_old_graficos.png", caption: { es:"Gráficos de líneas confusos y KPIs planos sin contexto", en:"Confusing line charts and flat KPIs without context" } },
+          { src: "/images/rend_old_datos_planos.gif", caption: { es:"Datos tabulares sin jerarquía — los usuarios exportaban todo para procesarlo aparte", en:"Tabular data without hierarchy — users exported everything to process it separately" } },
         ],
       },
 
       /* ══════════════════════════════════════════
-         2. PROCESO DE DISEÑO — Investigación
+         2. PROCESO — Investigación
          ══════════════════════════════════════════ */
       {
         phase: "research",
-        icon: "👂", title: { es:"Investigación: entendiendo el dolor", en:"Research: understanding the pain" },
-        content: { es:"[PENDIENTE: ¿Cómo descubriste lo que los usuarios necesitaban? ¿Hiciste entrevistas, revisaste tickets de soporte, analizaste uso con analytics? ¿Qué insights clave encontraste?]", en:"[PENDING: How did you discover what users needed? Did you conduct interviews, review support tickets, analyze usage with analytics? What key insights did you find?]" },
+        icon: "👂", title: { es:"Investigación: los datos que importan", en:"Research: the data that matters" },
+        content: { es:"El descubrimiento vino de dos fuentes complementarias. Primero, reuniones constantes con la Product Owner y el equipo de Customer Care. Este equipo ya preparaba reportes mensuales para clientes de alto volumen mostrando el rendimiento de sus cuentas y agentes — ya tenían definidos muchos de los datos que los usuarios necesitaban ver. Contrastar esa información con lo que la plataforma ya mostraba nos dio un mapa claro de los gaps.\n\nSegundo, implementamos tracking con Amplitude para medir el uso real de la sección de Historial. Los resultados confirmaron la hipótesis: visitas muy bajas y sesiones cortas, lo que indicaba que los usuarios no exploraban — solo exportaban.", en:"Discovery came from two complementary sources. First, constant meetings with the Product Owner and Customer Care team. This team already prepared monthly reports for high-volume clients showing their accounts and agents' performance — they had already defined many of the data points users needed to see. Contrasting that information with what the platform already showed gave us a clear map of the gaps.\n\nSecond, we implemented Amplitude tracking to measure actual usage of the History section. Results confirmed the hypothesis: very low visits and short sessions, indicating users weren't exploring — just exporting." },
         bullets: {
-          es: ["[PENDIENTE: insight 1]","[PENDIENTE: insight 2]","[PENDIENTE: insight 3]"],
-          en: ["[PENDING: insight 1]","[PENDING: insight 2]","[PENDING: insight 3]"],
-        },
-      },
-      {
-        phase: "research",
-        icon: "🎯", title: { es:"Decisiones clave de diseño", en:"Key design decisions" },
-        content: { es:"[PENDIENTE: ¿Por qué elegiste gráficos de barras sobre líneas? ¿Por qué dark mode? ¿Qué alternativas consideraste y descartaste? Cada decisión debe tener un 'porque...']", en:"[PENDING: Why did you choose bar charts over lines? Why dark mode? What alternatives did you consider and discard? Each decision should have a 'because...']" },
-        bullets: {
-          es: ["📊 Barras en vez de líneas — [PENDIENTE: porque...]","🌙 Dark mode — [PENDIENTE: porque...]","📖 Documentación integrada — [PENDIENTE: porque...]","[PENDIENTE: otras decisiones]"],
-          en: ["📊 Bars instead of lines — [PENDING: because...]","🌙 Dark mode — [PENDING: because...]","📖 Integrated documentation — [PENDING: because...]","[PENDING: other decisions]"],
+          es: ["🤝 Customer Care ya modelaba los datos que los clientes necesitaban — no partimos de cero, partimos de conocimiento real","📊 Amplitude confirmó sesiones cortas = la sección era solo un punto de exportación, no una herramienta de análisis","🔍 El gap principal: los datos existían en la plataforma, pero estaban dispersos y no se podían combinar"],
+          en: ["🤝 Customer Care already modeled the data clients needed — we didn't start from zero, we started from real knowledge","📊 Amplitude confirmed short sessions = the section was just an export point, not an analysis tool","🔍 The main gap: the data existed in the platform, but was scattered and couldn't be combined"],
         },
       },
 
       /* ══════════════════════════════════════════
-         2. PROCESO DE DISEÑO — Ideación
+         2. PROCESO — Decisiones clave
+         ══════════════════════════════════════════ */
+      {
+        phase: "research",
+        icon: "🎯", title: { es:"Decisiones clave", en:"Key decisions" },
+        content: { es:"Después de definir los datos, cada decisión de diseño respondió a un problema concreto:", en:"After defining the data, each design decision addressed a specific problem:" },
+        bullets: {
+          es: ["🔀 Departamentos, Cuentas y Agentes como filtros combinables — porque las categorías aisladas eran el problema raíz. Los analistas necesitan cruzar dimensiones libremente según lo que estén investigando","📊 Gráficos acompañados de tablas desplegables — porque no queríamos abrumar al usuario pero tampoco privarlo del detalle. El gráfico da la foto rápida, la tabla permite profundizar","🚀 Desarrollo dividido en fases (MVP primero) — porque la complejidad de los cálculos era alta y necesitábamos empezar a entregar valor sin esperar a tener todo listo","📖 Documentación de Figma para desarrollo — cada dato tenía su fórmula y lógica de cálculo documentada, porque los desarrolladores necesitaban entender exactamente qué significaba cada métrica"],
+          en: ["🔀 Departments, Accounts and Agents as combinable filters — because isolated categories were the root problem. Analysts need to freely cross dimensions based on what they're investigating","📊 Charts accompanied by expandable tables — because we didn't want to overwhelm the user but also didn't want to hide detail. The chart gives the quick picture, the table allows drilling down","🚀 Development split into phases (MVP first) — because calculation complexity was high and we needed to start delivering value without waiting for everything to be ready","📖 Figma documentation for development — every metric had its formula and calculation logic documented, because developers needed to understand exactly what each metric meant"],
+        },
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO — Ideación
          ══════════════════════════════════════════ */
       {
         phase: "ideation",
-        icon: "📝", title: { es:"La solución: analytics que se entienden", en:"The solution: analytics that make sense" },
-        content: { es:"[PENDIENTE: Describe la estructura de la solución. ¿Cómo reorganizaste la información? ¿Qué wireframes o esquemas creaste? ¿Cuál fue la lógica detrás de la nueva estructura?]", en:"[PENDING: Describe the solution structure. How did you reorganize the information? What wireframes or sketches did you create? What was the logic behind the new structure?]" },
+        icon: "📐", title: { es:"Arquitectura de la información", en:"Information architecture" },
+        content: { es:"Reorganizamos toda la información en 3 categorías orientadas a preguntas de negocio, con un sistema de filtros superiores (tiempo, cuentas, departamentos y agentes) que permite cualquier combinación:", en:"We reorganized all information into 3 categories oriented around business questions, with a top filter system (time, accounts, departments and agents) that allows any combination:" },
+        flow: {
+          es: ["Filtros combinables","Tickets: volumen y gestión","Primera Atención: calidad y tiempos","Eficiencia y Satisfacción: TMO, CSAT"],
+          en: ["Combinable filters","Tickets: volume & management","First Response: quality & times","Efficiency & Satisfaction: AHT, CSAT"],
+        },
+        bullets: {
+          es: ["🎫 Tickets — Volumen de conversaciones, gestión (cerrados, derivados, abordados), resolución en primer contacto, % atendido por IA. Acompañado de detalle por departamento y agente","⏱️ Primera Atención — Tickets dentro del estándar de primera respuesta, tiempos promedio de abordaje. Incluye un heat map que distribuye tickets por agente y rango de tiempo (0-3min hasta +1hr) para identificar dónde cae la mayoría y ajustar bonos o estándares","📊 Eficiencia y Satisfacción — TMO (tiempo medio de operación desde creación hasta resolución), tiempos de silencio entre respuestas, CSAT por agente y departamento. Evalúa la calidad percibida de la atención"],
+          en: ["🎫 Tickets — Conversation volume, management (closed, transferred, handled), first contact resolution, % handled by AI. Accompanied by detail per department and agent","⏱️ First Response — Tickets within first response quality standard, average handling times. Includes a heat map distributing tickets by agent and time range (0-3min to +1hr) to identify where most tickets fall and adjust bonuses or standards","📊 Efficiency & Satisfaction — AHT (average handling time from creation to resolution), silence times between responses, CSAT per agent and department. Evaluates perceived quality of service"],
+        },
+      },
+
+      /* ══════════════════════════════════════════
+         2. PROCESO — Prototipo + Demo
+         ══════════════════════════════════════════ */
+      {
+        phase: "ideation",
+        icon: "🖥️", title: { es:"La nueva sección en acción", en:"The new section in action" },
+        content: { es:"El diseño final reemplazó las categorías rígidas por un sistema flexible donde los filtros superiores permiten a los analistas hacer cualquier combinación de departamento, cuenta y agente. Cada categoría muestra un gráfico para la lectura rápida y una tabla desplegable para el detalle — el usuario decide cuánta profundidad necesita.", en:"The final design replaced rigid categories with a flexible system where top filters allow analysts to make any combination of department, account and agent. Each category shows a chart for quick reading and an expandable table for detail — the user decides how much depth they need." },
         image: "/images/rend_new_dashboard.gif",
       },
 
       /* ══════════════════════════════════════════
-         2. PROCESO DE DISEÑO — Iteración
+         2. PROCESO — Iteración
          ══════════════════════════════════════════ */
       {
         phase: "iteration",
-        icon: "🔧", title: { es:"Iteración: documentación y guías", en:"Iteration: documentation and guides" },
-        content: { es:"[PENDIENTE: ¿Qué cambió tras el primer lanzamiento? ¿Qué feedback recibiste? ¿Por qué agregaste la guía y la documentación integrada? ¿Qué problema resolvió?]", en:"[PENDING: What changed after the first launch? What feedback did you receive? Why did you add the guide and integrated documentation? What problem did it solve?]" },
+        icon: "🔧", title: { es:"Iteración: guía y documentación", en:"Iteration: guide and documentation" },
+        content: { es:"La primera versión se lanzó con una guía integrada que indicaba al usuario qué esperar de cada gráfico y tabla, ayudándolo a descubrir las funcionalidades de la nueva sección. En paralelo, documenté en Figma la lógica de cálculo de cada métrica para que el equipo de desarrollo entendiera exactamente qué significaba cada dato — esta documentación fue clave para alinear diseño e implementación.\n\nEl siguiente paso identificado es permitir filtros por datos del ticket (campos personalizados de cada operación), lo que permitiría descubrir resultados sobre temáticas específicas para cada cliente.", en:"The first version launched with an integrated guide showing users what to expect from each chart and table, helping them discover the new section's features. In parallel, I documented in Figma the calculation logic for each metric so the development team understood exactly what each data point meant — this documentation was key to aligning design and implementation.\n\nThe next identified step is enabling filters by ticket data (custom fields per operation), which would allow discovering results about specific topics for each client." },
         images: [
-          { src: "/images/rend_new_con_guia.gif", caption: { es:"Dashboard con guía integrada para nuevos usuarios", en:"Dashboard with integrated guide for new users" } },
-          { src: "/images/rend_new_con_docs.gif", caption: { es:"Documentación accesible desde la misma sección", en:"Documentation accessible from the same section" } },
+          { src: "/images/rend_new_con_guia.gif", caption: { es:"Guía integrada para el lanzamiento — orientaba al usuario sobre qué información encontrar en cada sección", en:"Integrated launch guide — helped users understand what information to find in each section" } },
+          { src: "/images/rend_new_con_docs.gif", caption: { es:"Documentación en Figma — cada métrica con su fórmula y lógica de cálculo para el equipo de desarrollo", en:"Figma documentation — each metric with its formula and calculation logic for the development team" } },
         ],
       },
 
       /* ══════════════════════════════════════════
-         3. LA SOLUCIÓN Y RESULTADOS
+         3. SOLUCIÓN Y RESULTADOS
          ══════════════════════════════════════════ */
       {
         phase: "results",
         icon: "🎬", title: { es:"La Solución Final", en:"The Final Solution" },
-        content: { es:"Un dashboard de rendimiento de equipo con gráficos de barras claros, dark mode, documentación integrada y guías contextuales. Diseñado para que los supervisores puedan evaluar la productividad de su equipo de un vistazo y tomar decisiones informadas sin salir de la plataforma.", en:"A team performance dashboard with clear bar charts, dark mode, integrated documentation and contextual guides. Designed so supervisors can evaluate their team's productivity at a glance and make informed decisions without leaving the platform." },
+        content: { es:"Un dashboard de rendimiento que reemplazó categorías aisladas por filtros combinables y agrupó los datos en 3 dimensiones orientadas a preguntas de negocio: Tickets, Primera Atención, y Eficiencia y Satisfacción. Cada dimensión combina gráficos para lectura rápida con tablas desplegables para el detalle, guía integrada para nuevos usuarios y documentación técnica para desarrollo.", en:"A performance dashboard that replaced isolated categories with combinable filters and grouped data into 3 business-oriented dimensions: Tickets, First Response, and Efficiency & Satisfaction. Each dimension combines charts for quick reading with expandable tables for detail, an integrated guide for new users, and technical documentation for development." },
         image: "/images/rend_new_dashboard.gif",
         highlight: true,
       },
       {
         phase: "results",
-        icon: "🏆", title: { es:"Resultados", en:"Results" },
-        content: { es:"[PENDIENTE: ¿Qué impacto tuvo el rediseño? Métricas, feedback cualitativo, adopción, testimonios. ¿Los usuarios dejaron de hacer algo que hacían antes? ¿Pidieron expandir el patrón a otras secciones?]", en:"[PENDING: What impact did the redesign have? Metrics, qualitative feedback, adoption, testimonials. Did users stop doing something they used to? Did they ask to expand the pattern to other sections?]" },
+        icon: "🏆", title: { es:"Impacto y próximos pasos", en:"Impact & next steps" },
+        content: { es:"Este proyecto transformó una sección que era solo un punto de exportación en una herramienta de análisis real. El mayor logro no fue visual — fue la definición colaborativa de los datos correctos con Customer Care y Product, asegurándonos de que cada métrica respondiera a una pregunta real de negocio.", en:"This project transformed a section that was just an export point into a real analysis tool. The biggest achievement wasn't visual — it was the collaborative definition of the right data with Customer Care and Product, ensuring every metric answered a real business question." },
         bullets: {
-          es: ["[PENDIENTE: resultado 1]","[PENDIENTE: resultado 2]","[PENDIENTE: resultado 3]"],
-          en: ["[PENDING: result 1]","[PENDING: result 2]","[PENDING: result 3]"],
+          es: ["🔀 De categorías aisladas a filtros combinables — los analistas ahora pueden cruzar departamentos, cuentas y agentes libremente","📊 De gráficos confusos a dashboards con propósito — cada sección responde a una pregunta de negocio específica","📖 Documentación como puente — la documentación de Figma alineó diseño y desarrollo, reduciendo idas y vueltas","🚀 Próximo paso: filtros por datos del ticket — campos personalizados que permitirán análisis por temáticas específicas de cada operación","🔄 Proyecto en fases — el MVP ya entrega valor mientras se construyen las siguientes iteraciones"],
+          en: ["🔀 From isolated categories to combinable filters — analysts can now freely cross departments, accounts and agents","📊 From confusing charts to purposeful dashboards — each section answers a specific business question","📖 Documentation as a bridge — Figma documentation aligned design and development, reducing back-and-forth","🚀 Next step: filters by ticket data — custom fields that will enable analysis by specific topics per operation","🔄 Phased project — the MVP already delivers value while next iterations are being built"],
         },
         highlight: true,
       },
