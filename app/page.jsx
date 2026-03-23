@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { PROJECTS } from "./data/projects";
 import { KNOWLEDGE_BASE, findKBMatch, simulateStream } from "./data/knowledgeBase";
+import SVG_TRANSLATIONS from "./data/svgTranslations";
 
 /* ═══════════════════════════════════════════════════════════════
    SYSTEM PROMPT
@@ -440,22 +441,51 @@ function CaseStudyViewer({ project, lang, onClose }) {
   const flowBoxStyle = { background:C.accent,color:"#fff",padding:"6px 12px",fontSize:11,fontWeight:"bold",textAlign:"center",border:"2px outset #4040C0",minWidth:70 };
   const flowArrow = { color:C.accent,fontSize:16,fontWeight:"bold",userSelect:"none" };
 
-  const ClickableImage = ({ src, alt, style }) => (
-    <img src={src} alt={alt} style={{...style, cursor:"pointer"}} onClick={() => setLightbox(src)} />
-  );
+  /* TranslatedSVG — renders SVG inline with translated text when lang=en */
+  const TranslatedSVG = ({ src, alt, style, onClick }) => {
+    const [svgMarkup, setSvgMarkup] = useState(null);
+    useEffect(() => {
+      if (lang !== "en" || !src?.endsWith(".svg")) { setSvgMarkup(null); return; }
+      const filename = src.split("/").pop();
+      const translations = SVG_TRANSLATIONS[filename];
+      if (!translations) { setSvgMarkup(null); return; }
+      let cancelled = false;
+      fetch(src).then(r => r.text()).then(raw => {
+        if (cancelled) return;
+        let svg = raw;
+        for (const [es, en] of translations) svg = svg.replaceAll(es, en);
+        setSvgMarkup(svg);
+      }).catch(() => { if (!cancelled) setSvgMarkup(null); });
+      return () => { cancelled = true; };
+    }, [src, lang]);
+
+    if (svgMarkup) {
+      return <div role="img" aria-label={alt} style={{width:"100%", ...style, cursor: onClick ? "pointer" : undefined}} onClick={onClick} dangerouslySetInnerHTML={{ __html: svgMarkup }} />;
+    }
+    return <img src={src} alt={alt} style={{...style, cursor: onClick ? "pointer" : undefined}} onClick={onClick} />;
+  };
+
+  const ClickableImage = ({ src, alt, style }) => {
+    if (src?.endsWith(".svg") && lang === "en") {
+      return <TranslatedSVG src={src} alt={alt} style={style} onClick={() => setLightbox(src)} />;
+    }
+    return <img src={src} alt={alt} style={{...style, cursor:"pointer"}} onClick={() => setLightbox(src)} />;
+  };
 
   return (
     <div style={{ position:"fixed",top:0,left:0,right:0,bottom:0,background:"rgba(0,0,128,.45)",zIndex:8000,display:"flex",alignItems:"center",justifyContent:"center",animation:"w98fadeIn .2s ease" }} onClick={onClose}>
       {/* Lightbox */}
       {lightbox && (
         <div onClick={(e) => { e.stopPropagation(); setLightbox(null); }} style={{ position:"fixed",top:0,left:0,right:0,bottom:0,background:"rgba(0,0,0,.88)",zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",cursor:"zoom-out",animation:"w98fadeIn .2s ease" }}>
-          <div style={{ background:C.winBg,border:"2px outset "+C.outset,maxWidth:"92vw",maxHeight:"92vh" }} onClick={e => e.stopPropagation()}>
+          <div style={{ background:C.winBg,border:"2px outset "+C.outset,maxWidth:"92vw",maxHeight:"92vh", width: lightbox?.endsWith(".svg") && lang === "en" ? "88vw" : undefined }} onClick={e => e.stopPropagation()}>
             <div style={{ background:C.titleGrad,color:C.titleText,padding:"3px 6px",fontSize:11,fontWeight:"bold",display:"flex",justifyContent:"space-between",alignItems:"center" }}>
               <span>🖼️ {t(s.title)}</span>
               <div onClick={() => setLightbox(null)} style={{width:14,height:14,background:C.face,border:"1px outset "+C.outset,display:"flex",alignItems:"center",justifyContent:"center",fontSize:8,cursor:"pointer",fontWeight:"bold"}}>✕</div>
             </div>
-            <div style={{ background:"#000",padding:4,border:"2px inset "+C.inset }}>
-              <img src={lightbox} alt={t(s.title)} style={{ maxWidth:"88vw",maxHeight:"82vh",objectFit:"contain",display:"block" }} />
+            <div style={{ background: lightbox?.endsWith(".svg") ? "#fff" : "#000",padding:4,border:"2px inset "+C.inset }}>
+              {lightbox?.endsWith(".svg") && lang === "en"
+                ? <TranslatedSVG src={lightbox} alt={t(s.title)} style={{ width:"100%",maxHeight:"82vh",display:"block" }} />
+                : <img src={lightbox} alt={t(s.title)} style={{ maxWidth:"88vw",maxHeight:"82vh",objectFit:"contain",display:"block" }} />}
             </div>
           </div>
         </div>
@@ -666,13 +696,13 @@ function DropMenu({ items, onClose }) {
   </>);
 }
 
-function StartMenu({ open, onClose, lang }) {
+function StartMenu({ open, onClose, lang, onAskProjects }) {
   if (!open) return null;
   const links = [
     { icon:"📧", label:"dotyayodot@gmail.com", href:"mailto:dotyayodot@gmail.com" },
     { icon:"💼", label:"LinkedIn", href:"https://www.linkedin.com/in/yayogalea/" },
     { icon:"📄", label:lang==="es"?"Descargar CV":"Download CV", href:"/images/Gabriel_Galea_CV_2026.pdf" },
-    { icon:"💎", label:"Diamond DS (Figma)", href:"https://www.figma.com/design/QWUDUeRFjdanjn0JhW4iU3/Diamond-Design-System-by-Yayo" },
+    { icon:"📂", label:lang==="es"?"Mis Proyectos":"My Projects", action:()=>{onAskProjects();onClose();} },
   ];
   return (<>
     <div onClick={onClose} style={{position:"fixed",inset:0,zIndex:998}}/>
@@ -680,7 +710,9 @@ function StartMenu({ open, onClose, lang }) {
       <div style={{ background:C.titleBar,color:C.titleText,padding:"8px 6px",fontWeight:"bold",fontSize:13,writingMode:"vertical-rl",textOrientation:"mixed",position:"absolute",left:0,top:0,bottom:0,display:"flex",alignItems:"center",justifyContent:"flex-end",letterSpacing:3,width:28 }}>YAYO</div>
       <div style={{marginLeft:28,padding:"4px 0"}}>
         {links.map((l,i)=>(
-          <a key={i} href={l.href} target="_blank" rel="noopener noreferrer" style={{display:"flex",alignItems:"center",gap:10,padding:"7px 14px",textDecoration:"none",color:C.txt,fontSize:12.5,fontFamily:"inherit"}}
+          <a key={i} href={l.href||"#"} target={l.href?"_blank":undefined} rel="noopener noreferrer"
+            onClick={e=>{if(l.action){e.preventDefault();l.action();}}}
+            style={{display:"flex",alignItems:"center",gap:10,padding:"7px 14px",textDecoration:"none",color:C.txt,fontSize:12.5,fontFamily:"inherit",cursor:"pointer"}}
             onMouseEnter={e=>e.currentTarget.style.background="#00008018"}
             onMouseLeave={e=>e.currentTarget.style.background="transparent"}
           ><span style={{fontSize:15}}>{l.icon}</span><span>{l.label}</span></a>
@@ -1086,7 +1118,7 @@ export default function YayoPortfolio() {
         </div>
       </div>
 
-      <StartMenu open={menuOpen} onClose={()=>setMenuOpen(false)} lang={lang}/>
+      <StartMenu open={menuOpen} onClose={()=>setMenuOpen(false)} lang={lang} onAskProjects={()=>send(lang==="es"?"¿Qué proyectos has hecho?":"What projects have you done?")}/>
 
       {/* Fullscreen Case Study Viewer overlay */}
       {gallery && PROJECTS[gallery] && <CaseStudyViewer project={PROJECTS[gallery]} lang={lang} onClose={()=>setGallery(null)}/>}
